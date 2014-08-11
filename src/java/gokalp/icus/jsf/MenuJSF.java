@@ -85,7 +85,6 @@ public class MenuJSF implements Serializable {
 
     public void handleToggle(ToggleEvent event) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, event.getComponent().getId() + " toggled", "Status:" + event.getVisibility().name());
-
         addMessage(message);
     }
 
