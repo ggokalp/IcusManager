@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Home Page</title>
+    </h:head>
+    <h:body>
+        <p:layout style="min-width:400px;min-height:200px;max-height:805px">
+            <ui:include src="menu_left.xhtml"/>
+
+            <p:layoutUnit position="center">
+                <h:form>
+                    <p:growl id="msgs" showDetail="true" />
+
+                    <p:dashboard id="board" model="#{menuJSF.model}">
+                        <p:ajax event="reorder" listener="#{menuJSF.handleReorder}" update="msgs" />
+
+                        <p:panel id="#{menuJSF.menu.get(0).getCode()}" header="#{menuJSF.menu.get(0).getNom()}">
+                            <h:outputLink value="#{facesContext.externalContext.requestContextPath}/faces/index.xhtml">
+                                <p:graphicImage value="/pictures/menu/stylo.png" title="Editez Client"/> 
+                            </h:outputLink>
+                        </p:panel>
+
+                        <p:panel id="#{menuJSF.menu.get(1).getCode()}" header="#{menuJSF.menu.get(1).getNom()}">
+                            <h:outputLink value="#{facesContext.externalContext.requestContextPath}/faces/index.xhtml">
+                                <p:graphicImage value="/pictures/menu/notes.png" title="Devis client"/> 
+                            </h:outputLink>
+                        </p:panel>
+
+                        <p:panel id="#{menuJSF.menu.get(2).getCode()}" header="#{menuJSF.menu.get(2).getNom()}">
+                            <h:outputText value="#{menuJSF.menu.get(2).getNom()}" />
+                        </p:panel>
+
+                        <p:panel id="#{menuJSF.menu.get(3).getCode()}" header="#{menuJSF.menu.get(3).getNom()}">
+                            <h:outputText value="#{menuJSF.menu.get(3).getNom()}" />
+                        </p:panel>
+
+                        <p:panel id="#{menuJSF.menu.get(4).getCode()}" header="#{menuJSF.menu.get(4).getNom()}">
+                            <h:outputText value="#{menuJSF.menu.get(4).getNom()}" />
+                        </p:panel>
+
+                        <p:panel id="#{menuJSF.menu.get(5).getCode()}" header="#{menuJSF.menu.get(5).getNom()}">
+                            <h:outputText value="#{menuJSF.menu.get(5).getNom()}" />
+                        </p:panel>
+
+                        <p:panel id="#{menuJSF.menu.get(6).getCode()}" header="#{menuJSF.menu.get(6).getNom()}">
+                            <h:outputText value="#{menuJSF.menu.get(6).getNom()}" />
+                        </p:panel>
+
+                        <p:panel id="#{menuJSF.menu.get(7).getCode()}" header="#{menuJSF.menu.get(7).getNom()}">
+                            <h:outputText value="#{menuJSF.menu.get(7).getNom()}" />
+                        </p:panel>
+                    </p:dashboard>
+
+                    <div style="clear:both" />
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+
