@@ -3,25 +3,68 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Client: Listing</title>
     </h:head>
     <h:body>
         <p:layout style="min-width:400px;min-height:790px;max-height:805px">
             <ui:include src="menu_left.xhtml"/>
-
             <p:layoutUnit position="center">
+                <p:dataTable var="client" value="#{clientJSF.client}" stickyHeader="true" 
+                             editable="true" emptyMessage="No cars found with given criteria" 
+                             style="margin-bottom:20px" filteredValue="#{clientJSF.clientFiltered}"
+                             widgetVar="clientTable">
+
+                    <f:facet name="header">
+                        Liste de clients
+                    </f:facet>
+
+                    <p:column style="width:16px">
+                        <p:rowToggler />
+                    </p:column>
+                    <p:column filterBy="#{client.id}" headerText="Id" footerText="contains" filterMatchMode="contains">
+                        <h:outputText value="#{client.id}" />
+                    </p:column>
+                    <p:column headerText="Société">
+                        <h:outputText value="#{client.societe}" />
+                    </p:column>
+                    <p:column headerText="Code">
+                        <h:outputText value="#{client.code}" />
+                    </p:column>
+                    <p:column headerText="Pays">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{client.pays}" /></f:facet>
+                            <f:facet name="input"><p:inputText id="modelInput" value="#{client.pays}" style="width:100%"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column style="width:32px">
+                        <p:rowEditor />
+                    </p:column>
+                    <p:rowExpansion>
+                        <p:panelGrid  columns="2" columnClasses="label,value" style="width:300px">
+                            <h:outputText value="Rue" />
+                            <h:outputText value="#{client.adrue}" />
+
+                            <h:outputText value="Ville" />
+                            <h:outputText value="#{client.adville}" />
+
+                            <h:outputText value="Forme juridique" />
+                            <h:outputText value="#{client.formejuridique}" />
+                        </p:panelGrid>
+                    </p:rowExpansion>
+                </p:dataTable>
                 TODO 1: Créer DB table, entité, bean,... clients
-                        Créer la table de client avec les propriétés:
-                                - Sticky (Header)
-                                - Edit (Row Editing)
-                                - Filter
-                                - ColToggler (ColumnToggler)
-                        --> Voir si possible de tout combiner.
-                        
-                        ++ Est-ce que c'est possible d'utiliser Expansion (RowExpansion) pour
-                            modifier les éléments du client ?
+                Créer la table de client avec les propriétés:
+                - Sticky (Header)
+                - Edit (Row Editing)
+                - Filter
+                - ColToggler (ColumnToggler)
+                --> Voir si possible de tout combiner.
+
+                ++ Est-ce que c'est possible d'utiliser Expansion (RowExpansion) pour
+                modifier les éléments du client ?
             </p:layoutUnit>
         </p:layout>
     </h:body>

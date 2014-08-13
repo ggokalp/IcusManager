@@ -26,6 +26,7 @@ public class ClientJSF implements Serializable{
     Facade facade;
     
     private List<Client> client;
+    private List<Client> clientFiltered;
     private Client selected;
 
     public ClientJSF() {
@@ -48,5 +49,13 @@ public class ClientJSF implements Serializable{
 
     public void setSelected(Client selected) {
         this.selected = selected;
+    }
+
+    public List<Client> getClientFiltered() {
+        return clientFiltered;
+    }
+
+    public void setClientFiltered(List<Client> clientFiltered) {
+        this.clientFiltered = clientFiltered;
     }
 }
