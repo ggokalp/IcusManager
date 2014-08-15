@@ -38,6 +38,7 @@ public class MenuJSF implements Serializable {
 
     public List<Menu> getMenu() {
         if (menu.isEmpty()) {
+            System.out.println("Load");
             menu = (List<Menu>) facade.getMenu();
         }
         System.out.println("Menu: " + menu.size());

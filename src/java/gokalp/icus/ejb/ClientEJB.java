@@ -27,4 +27,10 @@ public class ClientEJB {
         Collection<Client> clients = query.getResultList();
         return clients;
     }
+
+    public boolean addClient(Client client) {
+        System.out.println("Add EJB");
+        em.persist(client);
+        return true;
+    }
 }

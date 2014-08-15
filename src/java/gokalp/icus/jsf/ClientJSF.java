@@ -31,6 +31,7 @@ public class ClientJSF implements Serializable{
 
     public ClientJSF() {
         client = new ArrayList<>();
+        selected = new Client();
     }
 
     public List<Client> getClient() {
@@ -57,5 +58,12 @@ public class ClientJSF implements Serializable{
 
     public void setClientFiltered(List<Client> clientFiltered) {
         this.clientFiltered = clientFiltered;
+    }
+    
+    public void addNewClient(){
+        System.out.println("ADD JSF");
+        if(facade.addClient(selected)){
+            selected = new Client();
+        }
     }
 }

@@ -26,4 +26,9 @@ public class Facade {
     public Collection<Client> getClient(){
         return clientEJB.getClients();
     }
+    
+    public boolean addClient(Client client){
+        System.out.println("Add Facade");
+        return clientEJB.addClient(client);
+    }
 }
