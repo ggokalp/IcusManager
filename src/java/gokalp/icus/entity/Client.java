@@ -96,7 +96,7 @@ public class Client implements Serializable {
     @Column(name = "MODEREGLEMENT")
     private String modereglement;
     @Column(name = "BLOQUE")
-    private Integer bloque;
+    private Character bloque;
     @Size(max = 30)
     @Column(name = "MODETVA")
     private String modetva;
@@ -114,8 +114,9 @@ public class Client implements Serializable {
     @Size(max = 8)
     @Column(name = "DERNIERECOMMANDE")
     private String dernierecommande;
+    @Size(max = 50)
     @Column(name = "TARIF")
-    private Integer tarif;
+    private String tarif;
 
     public Client() {
     }
@@ -233,11 +234,11 @@ public class Client implements Serializable {
         this.modereglement = modereglement;
     }
 
-    public Integer getBloque() {
+    public Character getBloque() {
         return bloque;
     }
 
-    public void setBloque(Integer bloque) {
+    public void setBloque(Character bloque) {
         this.bloque = bloque;
     }
 
@@ -289,11 +290,11 @@ public class Client implements Serializable {
         this.dernierecommande = dernierecommande;
     }
 
-    public Integer getTarif() {
+    public String getTarif() {
         return tarif;
     }
 
-    public void setTarif(Integer tarif) {
+    public void setTarif(String tarif) {
         this.tarif = tarif;
     }
 

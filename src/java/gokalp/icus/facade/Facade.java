@@ -20,6 +20,7 @@ public class Facade {
     private ClientEJB clientEJB;
 
     public Collection<Menu> getMenu() {
+        System.out.println("facade menu");
         return menuEJB.getMenus();
     }
     

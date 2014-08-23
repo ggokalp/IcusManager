@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Garcian/Documents/GitHub/IcusManager/src/conf/persistence.xml</file>
-            <file>file:/C:/Users/Garcian/Documents/GitHub/IcusManager/src/java/gokalp/icus/jsf/MenuJSF.java</file>
-            <file>file:/C:/Users/Garcian/Documents/GitHub/IcusManager/web/index.xhtml</file>
-            <file>file:/C:/Users/Garcian/Documents/GitHub/IcusManager/src/java/gokalp/icus/entity/Menu.java</file>
+            <file>file:/C:/Users/Garcian/Documents/GitHub/IcusManager/web/newclient.xhtml</file>
+            <file>file:/C:/Users/Garcian/Documents/GitHub/IcusManager/web/delclient.xhtml</file>
+            <file>file:/C:/Users/Garcian/Documents/GitHub/IcusManager/src/java/gokalp/icus/facade/Facade.java</file>
             <file>file:/C:/Users/Garcian/Documents/GitHub/IcusManager/src/java/gokalp/icus/jsf/ClientJSF.java</file>
-            <file>file:/C:/Users/Garcian/Documents/GitHub/IcusManager/src/java/gokalp/icus/ejb/ClientEJB.java</file>
-            <file>file:/C:/Users/Garcian/Documents/GitHub/IcusManager/web/article.xhtml</file>
+            <file>file:/C:/Users/Garcian/Documents/GitHub/IcusManager/src/java/gokalp/icus/ejb/MenuEJB.java</file>
+            <file>file:/C:/Users/Garcian/Documents/GitHub/IcusManager/web/menu_left.xhtml</file>
             <file>file:/C:/Users/Garcian/Documents/GitHub/IcusManager/web/client.xhtml</file>
         </group>
     </open-files>

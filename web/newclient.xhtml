@@ -39,8 +39,9 @@
                         <h:outputText value="Dernière commande: " /> <p:inputText value="#{clientJSF.selected.dernierecommande}" maxlength="8"/>
                         <h:outputText value="Tarif: " /> <p:inputText value="#{clientJSF.selected.tarif}" maxlength="150"/>
                     </h:panelGrid>
+                    <h:commandButton value="Ajout" style="margin-left: 20px" action="#{clientJSF.addNewClient()}"/>
                 </h:form>
-                <p:commandButton value="Ajout" style="margin-left: 20px" action="#{clientJSF.addNewClient()}"/>
+
             </p:layoutUnit>
         </p:layout>
     </h:body>

@@ -62,6 +62,8 @@ public class ClientJSF implements Serializable{
     
     public void addNewClient(){
         System.out.println("ADD JSF");
+        System.out.println("Code : "+selected.getCode());
+        System.out.println(selected.toString());
         if(facade.addClient(selected)){
             selected = new Client();
         }

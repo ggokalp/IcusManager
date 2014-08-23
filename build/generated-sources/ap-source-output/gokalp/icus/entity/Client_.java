@@ -4,7 +4,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-08-13T02:42:40")
+@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-08-20T19:32:09")
 @StaticMetamodel(Client.class)
 public class Client_ { 
 
@@ -23,11 +23,11 @@ public class Client_ {
     public static volatile SingularAttribute<Client, String> modereglement;
     public static volatile SingularAttribute<Client, String> pays;
     public static volatile SingularAttribute<Client, String> societe;
-    public static volatile SingularAttribute<Client, Integer> bloque;
+    public static volatile SingularAttribute<Client, Character> bloque;
     public static volatile SingularAttribute<Client, String> representant;
     public static volatile SingularAttribute<Client, String> adlivrue;
     public static volatile SingularAttribute<Client, String> adlivcp;
     public static volatile SingularAttribute<Client, String> dernierecommande;
-    public static volatile SingularAttribute<Client, Integer> tarif;
+    public static volatile SingularAttribute<Client, String> tarif;
 
 }
