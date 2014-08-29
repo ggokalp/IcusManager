@@ -10,4 +10,33 @@
             <to-view-id>/modifclient.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/modifclient.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>modifValide</from-outcome>
+            <to-view-id>/client.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>modifInvalide</from-outcome>
+            <to-view-id>/modifclient.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/article.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>modifArticle</from-outcome>
+            <to-view-id>/modifarticle.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/modifarticle.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>valideArticle</from-outcome>
+            <to-view-id>/article.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>invalideArticle</from-outcome>
+            <to-view-id>/modifarticle.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

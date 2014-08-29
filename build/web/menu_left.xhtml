@@ -10,7 +10,7 @@
 
         <ui:composition>
             <p:layoutUnit position="west" resizable="true" size="250" minSize="200" maxSize="350">
-                <h3 style="margin-top:0">Plain Menu</h3>
+                <h3 style="margin-top:0">Menu</h3>
                 <h:form>
                     <p:menu>
                         <p:submenu label="Client">
@@ -30,9 +30,9 @@
                         <p:submenu label="Article">
                             <p:menuitem value="Devis" icon="ui-icon-arrowrefresh-1-w"/>
                             <p:menuitem value="Facture" icon="ui-icon-arrowrefresh-1-w"/>
-                            <p:menuitem value="Consulter" icon="ui-icon-disk" />
-                            <p:menuitem value="Ajouter" icon="ui-icon-arrowrefresh-1-w"/>
-                            <p:menuitem value="Supprimer" icon="ui-icon-close" />
+                            <p:menuitem value="Consulter" icon="ui-icon-disk" outcome="article.xhtml" />
+                            <p:menuitem value="Ajouter" icon="ui-icon-arrowrefresh-1-w" outcome="addarticle.xhtml"/>
+                            <p:menuitem value="Supprimer" icon="ui-icon-close" outcome="delarticle.xhtml"/>
                         </p:submenu>
                         <p:submenu label="Statistique">
                             <p:menuitem value="Budget" icon="ui-icon-arrowrefresh-1-w"/>
@@ -43,6 +43,5 @@
                 </h:form>
             </p:layoutUnit>
         </ui:composition>
-
     </body>
 </html>

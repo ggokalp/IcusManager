@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gokalp.icus.jsf;
 
 import gokalp.icus.entity.Client;
@@ -21,10 +20,11 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 @SessionScoped
-public class ClientJSF implements Serializable{
+public class ClientJSF implements Serializable {
+
     @EJB
     Facade facade;
-    
+
     private List<Client> client;
     private List<Client> clientFilteredSelect;
     private List<Client> clientFilteredDelete;
@@ -38,8 +38,7 @@ public class ClientJSF implements Serializable{
     }
 
     public List<Client> getClient() {
-        if(client.isEmpty())
-            client = (List<Client>) facade.getClient();
+        client = (List<Client>) facade.getClient();
         return client;
     }
 
@@ -47,7 +46,7 @@ public class ClientJSF implements Serializable{
         this.client = client;
     }
 
-    public Client getSelected(){
+    public Client getSelected() {
         System.out.println("get");
         return selected;
     }
@@ -73,26 +72,28 @@ public class ClientJSF implements Serializable{
         this.clientFilteredDelete = clientFilteredDelete;
     }
 
-    public void addNewClient(){
+    public void addNewClient() {
         System.out.println("ADD JSF");
-        if(facade.addClient(selected)){
+        if (facade.addClient(selected)) {
             System.out.println("clean");
             selected = new Client();
         }
     }
-    
-    public void delClient(){
+
+    public void delClient() {
         System.out.println("Del JSF");
-        if(facade.delClient(selected.getId())){
+        if (facade.delClient(selected.getId())) {
             System.out.println("Delete complete");
             client = (List<Client>) facade.getClient();
         }
     }
-    
-    public void modifClient(){
+
+    public String modifClient() {
         System.out.println("Edit JSF");
-        if(facade.editClient(selected)){
+        if (facade.editClient(selected)) {
             System.out.println("Modif JSF");
+            return "modifValide";
         }
+        return "modifInvalide";
     }
 }

@@ -13,7 +13,7 @@
             <ui:include src="menu_left.xhtml"/>
             <p:layoutUnit position="center">
                 <h:form>
-                    <p:dataTable id="tableClient" var="article" value="#{articleJSF.articles}" 
+                    <p:dataTable id="tableArticle" var="article" value="#{articleJSF.articles}" 
                                  emptyMessage="Pas d'article trouvé avec les critères donnés" 
                                  style="margin-bottom:20px" filteredValue="#{articleJSF.articlesFiltered}"
                                  widgetVar="articleTable"
@@ -22,10 +22,6 @@
                         <f:facet name="header">
                             Liste d'articles
                         </f:facet>
-
-                        <p:column style="width:16px">
-                            <p:rowToggler />
-                        </p:column>
                         <p:column filterBy="#{article.libellefr}" headerText="Libellé" filterMatchMode="contains">
                             <h:outputText value="#{article.libellefr}" />
                         </p:column>
@@ -44,20 +40,8 @@
                         <p:column filterBy="#{article.famille}" headerText="Famille" filterMatchMode="contains">
                             <h:outputText value="#{article.famille}" />
                         </p:column>
-                        <p:rowExpansion>
-                            <p:panelGrid  columns="2" columnClasses="label,value" style="width:300px">
-                                <h:outputText value="Libellé Anglais" />
-                                <h:outputText value="#{article.libelleen}" />
-
-                                <h:outputText value="Libellé Néérlandais" />
-                                <h:outputText value="#{article.libellenl}" />
-
-                                <h:outputText value="Bloqué ?" />
-                                <h:outputText value="#{article.bloque}" />
-                            </p:panelGrid>
-                        </p:rowExpansion>
                         <f:facet name="footer">
-                            <p:commandButton value="Modifier" action="modifArticle" />
+                            <p:commandButton value="Supprimer" update="tableArticle" action="#{articleJSF.delArticle()}" />
                         </f:facet>
                     </p:dataTable>
                 </h:form>

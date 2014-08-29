@@ -28,6 +28,7 @@ public class ArticleJSF {
     private List<Article> articles;
     private List<Article> articlesFiltered;
     private Article selected;
+    private Article article;
 
     public ArticleJSF() {
         articles = new ArrayList<Article>();
@@ -36,9 +37,7 @@ public class ArticleJSF {
     }
 
     public List<Article> getArticles() {
-        if(articles.isEmpty()){
-            articles = (List<Article>) facade.getArticles();
-        }
+        articles = (List<Article>) facade.getArticles();
         return articles;
     }
 
@@ -61,11 +60,19 @@ public class ArticleJSF {
     public void setSelected(Article selected) {
         this.selected = selected;
     }
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
+    }
     
     public void addNewArticle(){
         System.out.println("ADD JSF");
-        if(facade.addArticle(selected)){
-            selected = new Article();
+        if(facade.addArticle(article)){
+            article = new Article();
         }
     }
     
@@ -76,10 +83,12 @@ public class ArticleJSF {
         }
     }
     
-    public void modifArticle(){
+    public String modifArticle(){
         System.out.println("Edit JSF");
         if(facade.editArticle(selected)){
             System.out.println("Modif JSF");
+            return "valideArticle";
         }
+        return "invalideArticle";
     }
 }

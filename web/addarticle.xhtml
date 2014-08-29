@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Article: Ajouter</title>
+    </h:head>
+    <h:body>
+        <p:layout style="min-width:400px;min-height:790px;max-height:805px">
+            <ui:include src="menu_left.xhtml"/>
+            <p:layoutUnit position="center">
+                <h:form>
+                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                        <h:outputText value="Code: " /> <p:inputText value="#{articleJSF.article.code}" maxlength="30"/>
+                        <h:outputText value="Libellé: " /> <p:inputTextarea value="#{articleJSF.article.libellefr}" rows="6" cols="50" maxlength="1500"/>
+                        <h:outputText value="Libellé Anglais: " /> <p:inputTextarea value="#{articleJSF.article.libelleen}" rows="6" cols="50" maxlength="1500"/>
+                        <h:outputText value="Libellé Néérlandais: " /> <p:inputTextarea value="#{articleJSF.article.libellenl}" rows="6" cols="50" maxlength="1500"/>
+                        <h:outputText value="Famille: " /> <p:inputText value="#{articleJSF.article.famille}" maxlength="100"/>
+                        <h:outputText value="Prix d'achat: " /> <p:inputText value="#{articleJSF.article.prixachat}" maxlength="100"/>
+                        <h:outputText value="Prix de vente: " /> <p:inputText value="#{articleJSF.article.prixvente}" maxlength="100"/>
+                        <h:outputText value="Stock: " /> <p:inputText value="#{articleJSF.article.stock}" maxlength="100"/>
+                        <h:outputText value="Composé: " /> <p:inputText value="#{articleJSF.article.compose}" maxlength="100"/>
+                        <h:outputText value="Bloqué ?: " />
+                        <p:selectOneRadio id="option" value="#{articleJSF.article.bloque}">  
+                            <f:selectItem itemLabel="Non" itemValue="0" />  
+                            <f:selectItem itemLabel="Oui" itemValue="1" />  
+                        </p:selectOneRadio>  
+                    </h:panelGrid>
+                    <h:commandButton value="Ajouter" style="margin-left: 20px" action="#{articleJSF.addNewArticle()}"/>
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
+
