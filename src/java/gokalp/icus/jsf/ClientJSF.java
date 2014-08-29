@@ -31,7 +31,6 @@ public class ClientJSF implements Serializable {
     private Client selected;
 
     public ClientJSF() {
-        System.out.println("constructeur");
         client = new ArrayList<>();
         selected = new Client();
         clientFilteredDelete = new ArrayList<>();
@@ -80,12 +79,13 @@ public class ClientJSF implements Serializable {
         }
     }
 
-    public void delClient() {
+    public String delClient() {
         System.out.println("Del JSF");
         if (facade.delClient(selected.getId())) {
             System.out.println("Delete complete");
             client = (List<Client>) facade.getClient();
         }
+        return "update";
     }
 
     public String modifClient() {

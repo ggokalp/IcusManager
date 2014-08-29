@@ -12,10 +12,10 @@
         <p:layout style="min-width:400px;min-height:790px;max-height:805px">
             <ui:include src="menu_left.xhtml"/>
             <p:layoutUnit position="center">
-                <h:form>
-                    <p:dataTable id="tableClient" var="article" value="#{articleJSF.articles}" 
+                <h:form id="ftArticle">
+                    <p:dataTable id="tableArticle" var="article" value="#{articleJSF.articles}" 
                                  emptyMessage="Pas d'article trouvé avec les critères donnés" 
-                                 style="margin-bottom:20px" filteredValue="#{articleJSF.articlesFiltered}"
+                                 style="margin-bottom:20px" filteredValue="#{articleJSF.articlesFilteredSelect}"
                                  widgetVar="articleTable"
                                  selectionMode="single" selection="#{articleJSF.selected}" rowKey="#{article.id}">
 
@@ -35,7 +35,7 @@
                         <p:column filterBy="#{article.prixvente}" headerText="Prix Vente" filterMatchMode="contains">
                             <h:outputText value="#{article.prixvente}" />
                         </p:column>
-                        <p:column filterBy="#{article.stock}" headerText="Mode de réglement" filterMatchMode="contains">
+                        <p:column filterBy="#{article.stock}" headerText="Stock" filterMatchMode="contains">
                             <h:outputText value="#{article.stock}" />
                         </p:column>
                         <p:column filterBy="#{article.compose}" headerText="Composé" filterMatchMode="contains">
@@ -45,7 +45,7 @@
                             <h:outputText value="#{article.famille}" />
                         </p:column>
                         <p:rowExpansion>
-                            <p:panelGrid  columns="2" columnClasses="label,value" style="width:300px">
+                            <p:panelGrid  columns="2" columnClasses="label,value" style="width:500px">
                                 <h:outputText value="Libellé Anglais" />
                                 <h:outputText value="#{article.libelleen}" />
 

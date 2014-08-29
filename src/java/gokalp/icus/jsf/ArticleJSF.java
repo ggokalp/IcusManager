@@ -26,17 +26,21 @@ public class ArticleJSF {
     Facade facade;
     
     private List<Article> articles;
-    private List<Article> articlesFiltered;
+    private List<Article> articlesFilteredSelect;
+    private List<Article> articlesFilteredDelete;
     private Article selected;
     private Article article;
 
     public ArticleJSF() {
-        articles = new ArrayList<Article>();
-        articlesFiltered = new ArrayList<Article>();
+        articles = new ArrayList<>();
+        articlesFilteredSelect = new ArrayList<>();
+        articlesFilteredDelete = new ArrayList<>();
         selected = new Article();
+        article = new Article();
     }
 
     public List<Article> getArticles() {
+        System.out.println("get");
         articles = (List<Article>) facade.getArticles();
         return articles;
     }
@@ -45,12 +49,20 @@ public class ArticleJSF {
         this.articles = articles;
     }
 
-    public List<Article> getArticlesFiltered() {
-        return articlesFiltered;
+    public List<Article> getArticlesFilteredSelect() {
+        return articlesFilteredSelect;
     }
 
-    public void setArticlesFiltered(List<Article> articlesFiltered) {
-        this.articlesFiltered = articlesFiltered;
+    public void setArticlesFilteredSelect(List<Article> articlesFilteredSelect) {
+        this.articlesFilteredSelect = articlesFilteredSelect;
+    }
+
+    public List<Article> getArticlesFilteredDelete() {
+        return articlesFilteredDelete;
+    }
+
+    public void setArticlesFilteredDelete(List<Article> articlesFilteredDelete) {
+        this.articlesFilteredDelete = articlesFilteredDelete;
     }
 
     public Article getSelected() {

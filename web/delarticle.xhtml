@@ -12,10 +12,10 @@
         <p:layout style="min-width:400px;min-height:790px;max-height:805px">
             <ui:include src="menu_left.xhtml"/>
             <p:layoutUnit position="center">
-                <h:form>
-                    <p:dataTable id="tableArticle" var="article" value="#{articleJSF.articles}" 
+                <h:form id="ftsArticle">
+                    <p:dataTable id="tableSuppressionArticle" var="article" value="#{articleJSF.articles}" 
                                  emptyMessage="Pas d'article trouvé avec les critères donnés" 
-                                 style="margin-bottom:20px" filteredValue="#{articleJSF.articlesFiltered}"
+                                 style="margin-bottom:20px" filteredValue="#{articleJSF.articlesFilteredDelete}"
                                  widgetVar="articleTable"
                                  selectionMode="single" selection="#{articleJSF.selected}" rowKey="#{article.id}">
 
@@ -41,7 +41,7 @@
                             <h:outputText value="#{article.famille}" />
                         </p:column>
                         <f:facet name="footer">
-                            <p:commandButton value="Supprimer" update="tableArticle" action="#{articleJSF.delArticle()}" />
+                            <p:commandButton value="Supprimer" update="tableSuppressionArticle" action="#{articleJSF.delArticle()}" />
                         </f:facet>
                     </p:dataTable>
                 </h:form>

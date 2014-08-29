@@ -18,7 +18,7 @@
                 <h:form>
                     <p:dataTable id="tableClient" var="client" value="#{clientJSF.client}" 
                                  emptyMessage="Pas de société trouvée avec les critères donnés" 
-                                 style="margin-bottom:20px" filteredValue="#{clientJSF.clientFilteredSelect}"
+                                 style="margin-bottom:20px" filteredValue="#{clientJSF.clientFilteredDelete}"
                                  widgetVar="clientTable"
                                  selectionMode="single" selection="#{clientJSF.selected}" rowKey="#{client.id}">
 
