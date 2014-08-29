@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Client: Ajouter</title>
+        <title>Client: Modifier</title>
     </h:head>
     <h:body>
         <p:layout style="min-width:400px;min-height:790px;max-height:805px">
@@ -39,9 +39,8 @@
                         <h:outputText value="Dernière commande: " /> <p:inputText value="#{clientJSF.selected.dernierecommande}" maxlength="8"/>
                         <h:outputText value="Tarif: " /> <p:inputText value="#{clientJSF.selected.tarif}" maxlength="150"/>
                     </h:panelGrid>
-                    <h:commandButton value="Ajout" style="margin-left: 20px" action="#{clientJSF.addNewClient()}"/>
+                    <h:commandButton value="Modifer" style="margin-left: 20px" action="#{clientJSF.modifClient()}"/>
                 </h:form>
-
             </p:layoutUnit>
         </p:layout>
     </h:body>

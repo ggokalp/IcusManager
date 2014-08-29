@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gokalp.icus.ejb;
 
 import gokalp.icus.entity.Client;
@@ -19,9 +18,10 @@ import javax.persistence.Query;
  */
 @Stateless
 public class ClientEJB {
+
     @PersistenceContext(unitName = "IcusManagerPU")
     private EntityManager em;
-    
+
     public Collection<Client> getClients() {
         Query query = em.createNamedQuery("Client.findAll");
         Collection<Client> clients = query.getResultList();
@@ -32,5 +32,27 @@ public class ClientEJB {
         System.out.println("Add EJB");
         em.persist(client);
         return true;
+    }
+
+    public boolean delClient(int selectedId) {
+        System.out.println("Delete EJB");
+        Client client = em.find(Client.class, selectedId);
+        if (client != null) {
+            System.out.println("remove");
+            em.remove(client);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean editClient(Client client) {
+        System.out.println("UPDATE EJB");
+        if (client != null) {
+            em.merge(client);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -12,26 +12,29 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author Garcian
  */
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class ClientJSF implements Serializable{
     @EJB
     Facade facade;
     
     private List<Client> client;
-    private List<Client> clientFiltered;
+    private List<Client> clientFilteredSelect;
+    private List<Client> clientFilteredDelete;
     private Client selected;
 
     public ClientJSF() {
+        System.out.println("constructeur");
         client = new ArrayList<>();
         selected = new Client();
+        clientFilteredDelete = new ArrayList<>();
     }
 
     public List<Client> getClient() {
@@ -44,28 +47,52 @@ public class ClientJSF implements Serializable{
         this.client = client;
     }
 
-    public Client getSelected() {
+    public Client getSelected(){
+        System.out.println("get");
         return selected;
     }
 
     public void setSelected(Client selected) {
+        System.out.println("set");
         this.selected = selected;
     }
 
-    public List<Client> getClientFiltered() {
-        return clientFiltered;
+    public List<Client> getClientFilteredSelect() {
+        return clientFilteredSelect;
     }
 
-    public void setClientFiltered(List<Client> clientFiltered) {
-        this.clientFiltered = clientFiltered;
+    public void setClientFilteredSelect(List<Client> clientFilteredSelect) {
+        this.clientFilteredSelect = clientFilteredSelect;
     }
-    
+
+    public List<Client> getClientFilteredDelete() {
+        return clientFilteredDelete;
+    }
+
+    public void setClientFilteredDelete(List<Client> clientFilteredDelete) {
+        this.clientFilteredDelete = clientFilteredDelete;
+    }
+
     public void addNewClient(){
         System.out.println("ADD JSF");
-        System.out.println("Code : "+selected.getCode());
-        System.out.println(selected.toString());
         if(facade.addClient(selected)){
+            System.out.println("clean");
             selected = new Client();
+        }
+    }
+    
+    public void delClient(){
+        System.out.println("Del JSF");
+        if(facade.delClient(selected.getId())){
+            System.out.println("Delete complete");
+            client = (List<Client>) facade.getClient();
+        }
+    }
+    
+    public void modifClient(){
+        System.out.println("Edit JSF");
+        if(facade.editClient(selected)){
+            System.out.println("Modif JSF");
         }
     }
 }

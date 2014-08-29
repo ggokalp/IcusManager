@@ -9,30 +9,55 @@
         <title>Client: Listing</title>
     </h:head>
     <h:body>
+        <p:notificationBar position="top" effect="slide" widgetVar="bar" styleClass="top">  
+            <h:outputText value="Suppression réussi" style="font-size:36px;" />  
+        </p:notificationBar> 
         <p:layout style="min-width:400px;min-height:790px;max-height:805px">
             <ui:include src="menu_left.xhtml"/>
             <p:layoutUnit position="center">
-                <p:dataTable var="client" value="#{clientJSF.client}" stickyHeader="true" 
-                             emptyMessage="No clients found with given criteria" 
-                             style="margin-bottom:20px" filteredValue="#{clientJSF.clientFiltered}"
-                             widgetVar="clientTable">
+                <h:form>
+                    <p:dataTable id="tableClient" var="client" value="#{clientJSF.client}" 
+                                 emptyMessage="Pas de société trouvée avec les critères donnés" 
+                                 style="margin-bottom:20px" filteredValue="#{clientJSF.clientFilteredSelect}"
+                                 widgetVar="clientTable"
+                                 selectionMode="single" selection="#{clientJSF.selected}" rowKey="#{client.id}">
 
-                    <f:facet name="header">
-                        Liste de clients
-                    </f:facet>
-                    <p:column filterBy="#{client.id}" headerText="Id" footerText="contains" filterMatchMode="contains">
-                        <h:outputText value="#{client.id}" />
-                    </p:column>
-                    <p:column headerText="Société">
-                        <h:outputText value="#{client.societe}" />
-                    </p:column>
-                    <p:column headerText="Code">
-                        <h:outputText value="#{client.code}" />
-                    </p:column>
-                    <p:column headerText="Pays">
-                        <h:outputText value="#{client.pays}" />
-                    </p:column>
-                </p:dataTable>
+                        <f:facet name="header">
+                            Liste de clients
+                        </f:facet>
+                        <p:column filterBy="#{client.societe}" headerText="Société" filterMatchMode="contains">
+                            <h:outputText value="#{client.societe}" />
+                        </p:column>
+                        <p:column filterBy="#{client.formejuridique}" headerText="Forme Juridique" filterMatchMode="contains">
+                            <h:outputText value="#{client.formejuridique}" />
+                        </p:column>
+                        <p:column filterBy="#{client.categorie}" headerText="Catégorie" filterMatchMode="contains">
+                            <h:outputText value="#{client.categorie}" />
+                        </p:column>
+                        <p:column filterBy="#{client.modereglement}" headerText="Mode de réglement" filterMatchMode="contains">
+                            <h:outputText value="#{client.modereglement}" />
+                        </p:column>
+                        <p:column filterBy="#{client.remise}" headerText="Remise" filterMatchMode="contains">
+                            <h:outputText value="#{client.remise}" />
+                        </p:column>
+                        <p:column filterBy="#{client.dernierecommande}" headerText="Dernière commande" filterMatchMode="contains">
+                            <h:outputText value="#{client.dernierecommande}" />
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton value="Supprimer" update="tableClient" action="#{clientJSF.delClient()}" />
+                        </f:facet>
+                    </p:dataTable>
+                    <!-- TODO 1: Créer DB table, entité, bean,... clients
+                    Créer la table de client avec les propriétés:
+                    - Sticky (Header)
+                    - Edit (Row Editing)
+                    - Filter
+                    - ColToggler (ColumnToggler)
+                    - Voir si possible de tout combiner.
+    
+                    ++ Est-ce que c'est possible d'utiliser Expansion (RowExpansion) pour
+                    modifier les éléments du client ? -->
+                </h:form>
             </p:layoutUnit>
         </p:layout>
     </h:body>
