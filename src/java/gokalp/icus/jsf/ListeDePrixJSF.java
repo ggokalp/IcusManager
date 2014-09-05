@@ -32,6 +32,7 @@ public class ListeDePrixJSF implements Serializable {
     private List<String> listedenoms;
     private List<Article> listeArticle;
     private String nom;
+    private String nouveauNom;
     private int idClient;
 
     public ListeDePrixJSF() {
@@ -86,6 +87,7 @@ public class ListeDePrixJSF implements Serializable {
         this.listedeprix.clear();
         this.listedenoms.clear();
         this.listeArticle.clear();
+        this.nom = "" ;
         return "listeDePrix";
     }
 
@@ -99,6 +101,18 @@ public class ListeDePrixJSF implements Serializable {
 
     public void setListeArticle(List<Article> listeArticle) {
         this.listeArticle = listeArticle;
+    }
+
+    public String getNouveauNom() {
+        return nouveauNom;
+    }
+
+    public void setNouveauNom(String nouveauNom) {
+        this.nouveauNom = nouveauNom;
+    }
+
+    public int getIdClient() {
+        return idClient;
     }
 
     public void addArticle(Article selectedArticle) {
@@ -117,5 +131,12 @@ public class ListeDePrixJSF implements Serializable {
         l.setLibelle(a.getLibellefr());
         l.setPrixvente(a.getPrixvente());
         facade.editListeDePrix(l);
+    }
+    
+    public void addList(){
+        if(!this.nouveauNom.isEmpty()){
+            this.nom = this.nouveauNom;
+        }
+        this.nouveauNom = "";
     }
 }

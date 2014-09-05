@@ -19,10 +19,10 @@
                         <f:selectItems value="#{listeDePrixJSF.listedenoms}" var="list" itemLabel="#{list}" itemValue="#{list}"/>
                     </p:selectOneMenu>
                     <p:commandButton value="Charger liste" update="tableArticleDeLaListeDePrix" />
-                    <p:commandButton value="Créer nouvelle liste" />
-                    <p:inputText />
+                    <p:commandButton value="Créer nouvelle liste" action="#{listeDePrixJSF.addList()}" update=":ftArticle"/>
+                    <p:inputText value="#{listeDePrixJSF.nouveauNom}"/>
 
-                    <p:dataTable id="tableArticleDeLaListeDePrix" var="article" value="#{listeDePrixJSF.listeArticle}" 
+                    <p:dataTable id="tableArticleDeLaListeDePrix" var="prix" value="#{listeDePrixJSF.listedeprix}" 
                                  style="margin-bottom:20px" editable="true">
 
                         <p:ajax event="rowEdit" listener="#{listeDePrixJSF.onRowEdit}" />
@@ -31,18 +31,15 @@
                             Liste de prix
                         </f:facet>
                         <p:column headerText="Libellé">
-                            <h:outputText value="#{article.libellefr}" />
-                        </p:column>
-                        <p:column headerText="Composé">
-                            <h:outputText value="#{article.compose}" />
+                            <h:outputText value="#{prix.libelle}" />
                         </p:column>
                         <p:column headerText="Famille">
-                            <h:outputText value="#{article.famille}" />
+                            <h:outputText value="#{prix.famille}" />
                         </p:column>
                         <p:column headerText="Prix Vente">
                             <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{article.prixvente}" /></f:facet>
-                                <f:facet name="input"><p:inputText value="#{article.prixvente}" style="width:100%" label="PrixVente"/></f:facet>
+                                <f:facet name="output"><h:outputText value="#{prix.prixvente}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{prix.prixvente}" style="width:100%" label="PrixVente"/></f:facet>
                             </p:cellEditor>
                         </p:column>
                         <p:column style="width:32px">
@@ -55,15 +52,8 @@
                         <f:facet name="header">
                             Article à ajouter
                         </f:facet>
-
-                        <p:column style="width:16px">
-                            <p:rowToggler />
-                        </p:column>
                         <p:column headerText="Libellé" filterMatchMode="contains">
                             <h:outputText value="#{article.libellefr}" />
-                        </p:column>
-                        <p:column headerText="Composé" filterMatchMode="contains">
-                            <h:outputText value="#{article.compose}" />
                         </p:column>
                         <p:column headerText="Famille" filterMatchMode="contains">
                             <h:outputText value="#{article.famille}" />
