@@ -7,7 +7,10 @@
 package gokalp.icus.ejb;
 
 import gokalp.icus.entity.Article;
+import gokalp.icus.entity.Listedeprix;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +29,17 @@ public class ArticleEJB {
         Query query = em.createNamedQuery("Article.findAll");
         Collection<Article> articles = query.getResultList();
         return articles;
+    }
+    
+    public List<Article> getArticles(List<Listedeprix> list){
+        System.out.println("get articles ejb");
+        Query query = em.createNamedQuery("Article.findById");
+        List<Article> article = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            query.setParameter("id", list.get(i).getListedeprixPK().getIdarticle());
+            article.add((Article) query.getSingleResult());
+        }
+        return article;
     }
     
     public boolean addArticle(Article article) {

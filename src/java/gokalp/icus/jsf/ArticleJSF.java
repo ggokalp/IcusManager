@@ -8,6 +8,7 @@ package gokalp.icus.jsf;
 
 import gokalp.icus.entity.Article;
 import gokalp.icus.facade.Facade;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
@@ -21,7 +22,7 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
-public class ArticleJSF {
+public class ArticleJSF implements Serializable{
     @EJB
     Facade facade;
     

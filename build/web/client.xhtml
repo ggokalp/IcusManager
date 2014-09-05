@@ -99,6 +99,7 @@
                         </p:rowExpansion>
                         <f:facet name="footer">
                             <p:commandButton value="Modifier" action="modifierClient" />
+                            <p:commandButton value="Nouvelle liste de prix" action="#{listeDePrixJSF.setIdClient(clientJSF.selected.id)}" />
                         </f:facet>
                     </p:dataTable>
                     <!-- TODO 1: Créer DB table, entité, bean,... clients

@@ -9,6 +9,10 @@
             <from-outcome>modifierClient</from-outcome>
             <to-view-id>/modifclient.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-outcome>listeDePrix</from-outcome>
+            <to-view-id>/listedeprix.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/modifclient.xhtml</from-view-id>
