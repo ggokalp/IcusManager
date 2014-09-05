@@ -16,7 +16,7 @@
                     <p:outputLabel value="Liste de prix:"/>
                     <p:selectOneMenu id="city" value="#{listeDePrixJSF.nom}" effect="fold" editable="true">
                         <f:selectItem itemLabel="Select One" itemValue="" />
-                        <f:selectItems value="#{listeDePrixJSF.listedenoms}" var="list" itemLabel="#{list.listedeprixPK.listenom}" itemValue="#{list.listedeprixPK.listenom}"/>
+                        <f:selectItems value="#{listeDePrixJSF.listedenoms}" var="list" itemLabel="#{list}" itemValue="#{list}"/>
                     </p:selectOneMenu>
                     <p:commandButton value="Charger liste" update="tableArticleDeLaListeDePrix" />
                     <p:commandButton value="Créer nouvelle liste" />

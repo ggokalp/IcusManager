@@ -83,6 +83,10 @@ public class Facade {
         return listeEJB.getListeDePrix(idClient,nom);
     }
     
+    public Collection<String> getListeDeNoms(int idClient){
+        return listeEJB.getListeDeNoms(idClient);
+    }
+    
     public List<Article> getArticles(List<Listedeprix> list){
         System.out.println("get articles facade");
         return articleEJB.getArticles(list);

@@ -29,7 +29,7 @@ public class ListeDePrixJSF implements Serializable {
 
     private Listedeprix selected;
     private List<Listedeprix> listedeprix;
-    private List<Listedeprix> listedenoms;
+    private List<String> listedenoms;
     private List<Article> listeArticle;
     private String nom;
     private int idClient;
@@ -58,16 +58,16 @@ public class ListeDePrixJSF implements Serializable {
         this.listedeprix = listedeprix;
     }
 
-    public List<Listedeprix> getListedenoms() {
+    public List<String> getListedenoms() {
         System.out.println("get liste de noms JSF");
         if (listedenoms.isEmpty()) {
-            listedenoms = (List<Listedeprix>) facade.getListesDePrix(idClient);
+            listedenoms = (List<String>) facade.getListeDeNoms(idClient);
         }
         System.out.println(listedenoms.size());
         return listedenoms;
     }
 
-    public void setListedenoms(List<Listedeprix> listedenoms) {
+    public void setListedenoms(List<String> listedenoms) {
         this.listedenoms = listedenoms;
     }
 
