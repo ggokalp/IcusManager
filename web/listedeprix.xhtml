@@ -45,6 +45,9 @@
                         <p:column style="width:32px">
                             <p:rowEditor />
                         </p:column>
+                        <p:column style="width:32px">
+                            <p:menuitem value="Delete" update="tableArticleDeLaListeDePrix" icon="ui-icon-close"/>
+                        </p:column>
                     </p:dataTable>
                     <p:dataTable id="tableArticleAAjouter" var="article" value="#{articleJSF.articles}" 
                                  widgetVar="articleTable" selectionMode="single" selection="#{articleJSF.selected}" rowKey="#{article.id}">

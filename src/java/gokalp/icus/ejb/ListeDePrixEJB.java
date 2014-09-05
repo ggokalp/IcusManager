@@ -43,7 +43,7 @@ public class ListeDePrixEJB {
     }
     
     public Collection<Listedeprix> getListeDePrix(int idClient, String nom){
-        System.out.println("id : "+idClient+ " nom : "+nom);
+        System.out.println("getListe de prix : id: "+idClient+ " nom: "+nom);
         Query query = em.createNamedQuery("Listedeprix.findByListenomAndIdClient");
         query.setParameter("idclient", idClient);
         query.setParameter("listenom", nom);

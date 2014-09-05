@@ -51,7 +51,9 @@ public class ListeDePrixJSF implements Serializable {
     }
 
     public List<Listedeprix> getListedeprix() {
-        listedeprix = (List<Listedeprix>) facade.getListesDePrix(idClient, nom);
+        if (listedeprix.isEmpty()) {
+            listedeprix = (List<Listedeprix>) facade.getListesDePrix(idClient, nom);
+        }
         return listedeprix;
     }
 
@@ -87,7 +89,7 @@ public class ListeDePrixJSF implements Serializable {
         this.listedeprix.clear();
         this.listedenoms.clear();
         this.listeArticle.clear();
-        this.nom = "" ;
+        this.nom = "";
         return "listeDePrix";
     }
 
@@ -121,22 +123,19 @@ public class ListeDePrixJSF implements Serializable {
         l.setLibelle(selectedArticle.getLibellefr());
         l.setPrixvente(selectedArticle.getPrixvente());
         facade.addListeDePrix(l);
+        this.listedeprix.clear();
     }
 
     public void onRowEdit(RowEditEvent event) {
-        Article a = (Article) event.getObject();
-        System.out.println("Nouveau prix de vente : " + a.getPrixvente());
-        Listedeprix l = new Listedeprix(idClient, nom, a.getId());
-        l.setFamille(a.getFamille());
-        l.setLibelle(a.getLibellefr());
-        l.setPrixvente(a.getPrixvente());
-        facade.editListeDePrix(l);
+        System.out.println(((Listedeprix) event.getObject()).getPrixvente());
+        facade.editListeDePrix((Listedeprix) event.getObject());
     }
-    
-    public void addList(){
-        if(!this.nouveauNom.isEmpty()){
+
+    public void addList() {
+        if (!this.nouveauNom.isEmpty()) {
             this.nom = this.nouveauNom;
         }
         this.nouveauNom = "";
     }
+
 }
