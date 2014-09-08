@@ -8,3 +8,5 @@ CREATE TABLE devisdetail (
 	quantite integer,
 	prixtotht double
 );
+
+-- COmment
