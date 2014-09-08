@@ -18,8 +18,10 @@ public class MenuEJB {
     private EntityManager em;
 
     public Collection<Menu> getMenus() {
+        System.out.println("ejb menu");
         Query query = em.createNamedQuery("Menu.findAll");
         Collection<Menu> menu = query.getResultList();
+        System.out.println("ejb fin getmenu");
         return menu;
     }
 }

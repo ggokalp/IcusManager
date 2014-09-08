@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Client: Liste de prix</title>
+    </h:head>
+    <h:body>
+        <p:layout style="min-width:400px;min-height:790px;max-height:805px">
+            <ui:include src="menu_left.xhtml"/>
+            <p:layoutUnit position="center">
+                <h:form id="ftArticle">
+                    <p:outputLabel value="Liste de prix:"/>
+                    <p:selectOneMenu id="city" value="#{listeDePrixJSF.nom}" effect="fold" editable="true" panelStyle="width:180px">
+                        <f:selectItems value="#{listeDePrixJSF.listedenoms}" var="list" itemLabel="#{list}" itemValue="#{list}" />
+                    </p:selectOneMenu>
+                    <p:commandButton value="Charger liste" update="tableArticleDeLaListeDePrix" />
+                    <p:commandButton value="Créer nouvelle liste" action="#{listeDePrixJSF.addList()}" update=":ftArticle"/>
+                    <p:inputText value="#{listeDePrixJSF.nouveauNom}"/>
+
+                    <p:dataTable id="tableArticleDeLaListeDePrix" var="prix" value="#{listeDePrixJSF.listedeprix}" 
+                                 style="margin-bottom:20px" editable="true">
+
+                        <p:ajax event="rowEdit" listener="#{listeDePrixJSF.onRowEdit}" />
+
+                        <f:facet name="header">
+                            Liste de prix
+                        </f:facet>
+                        <p:column headerText="Libellé">
+                            <h:outputText value="#{prix.libelle}" />
+                        </p:column>
+                        <p:column headerText="Famille">
+                            <h:outputText value="#{prix.famille}" />
+                        </p:column>
+                        <p:column headerText="Prix Vente">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{prix.prixvente}" /></f:facet>
+                                <f:facet name="input"><p:inputText value="#{prix.prixvente}" style="width:100%" label="PrixVente"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column style="width:32px">
+                            <p:rowEditor />
+                        </p:column>
+                        <p:column style="width:32px">
+                            <p:menuitem value="Delete" update="tableArticleDeLaListeDePrix" icon="ui-icon-close"/>
+                        </p:column>
+                    </p:dataTable>
+                    <p:dataTable id="tableArticleAAjouter" var="article" value="#{articleJSF.articles}" 
+                                 widgetVar="articleTable" selectionMode="single" selection="#{articleJSF.selected}" rowKey="#{article.id}">
+
+                        <f:facet name="header">
+                            Article à ajouter
+                        </f:facet>
+                        <p:column headerText="Libellé" filterMatchMode="contains">
+                            <h:outputText value="#{article.libellefr}" />
+                        </p:column>
+                        <p:column headerText="Famille" filterMatchMode="contains">
+                            <h:outputText value="#{article.famille}" />
+                        </p:column>
+                        <p:column headerText="Prix Vente" filterMatchMode="contains">
+                            <h:outputText value="#{article.prixvente}" />
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton value="Ajouter" action="#{listeDePrixJSF.addArticle(articleJSF.selected)}" update=":ftArticle"/>
+                        </f:facet>
+                    </p:dataTable>
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

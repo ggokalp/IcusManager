@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="index_with menu_progra.xhtml" x="862" y="446" zoom="true"/>
+        <Node id="modifarticle.xhtml" x="867" y="297" zoom="true"/>
+        <Node id="delarticle.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="index_with menu.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="listedeprix.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="delclient.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="addarticle.xhtml" x="382" y="150" zoom="true"/>
+        <Node id="newclient.xhtml" x="638" y="451" zoom="true"/>
+        <Node id="article.xhtml" x="659" y="150" zoom="true"/>
+        <Node id="index.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="modifclient.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="menu_left.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="client.xhtml" x="150" y="150" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

@@ -3,5 +3,51 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-
+    <navigation-rule>
+        <from-view-id>/client.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>modifierClient</from-outcome>
+            <to-view-id>/modifclient.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>listeDePrix</from-outcome>
+            <to-view-id>/listedeprix.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/modifclient.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>modifValide</from-outcome>
+            <to-view-id>/client.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>modifInvalide</from-outcome>
+            <to-view-id>/modifclient.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/article.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>modifArticle</from-outcome>
+            <to-view-id>/modifarticle.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/modifarticle.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>valideArticle</from-outcome>
+            <to-view-id>/article.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>invalideArticle</from-outcome>
+            <to-view-id>/modifarticle.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/delclient.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>update</from-outcome>
+            <to-view-id>/delclient.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

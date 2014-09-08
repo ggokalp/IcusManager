@@ -1,0 +1,7 @@
+drop table artcorresp;
+
+CREATE TABLE article (
+  id int NOT NULL, 
+  code varchar(30) NOT NULL,
+  PRIMARY KEY (id)
+);

@@ -15,14 +15,14 @@ CREATE TABLE client (
   adlivville varchar(150),
   adlivcp varchar(25),
   modereglement varchar(20),
-  bloque int(1),
+  bloque char(1),
   modetva varchar(30),
   remise int,
   remarque varchar(150),
   numentreprise varchar(25),
   representant varchar(150),
   dernierecommande varchar(8), -- OR DATE ?
-  tarif int(1),
+  tarif varchar(50),
   PRIMARY KEY (id)
 );
 
