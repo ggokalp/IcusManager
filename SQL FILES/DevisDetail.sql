@@ -1,6 +1,6 @@
-DROP TABLE devisdetail;
+DROP TABLE devisdetails;
 
-CREATE TABLE devisdetail (
+CREATE TABLE devisdetails (
 	nopiece varchar(100), 
 	article varchar(100),
 	descritpion varchar(5000),

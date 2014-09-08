@@ -1,0 +1,1 @@
+select dg.ID, dd.NOPIECE, dd.ARTICLE, dd.DESCRITPION, dd.PRIXHT, dd.QUANTITE, dd.PRIXTOTHT from devisdetails dd join devisgeneral dg on dg.NOPIECE=dd.NOPIECE;
