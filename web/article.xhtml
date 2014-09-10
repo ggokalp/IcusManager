@@ -17,8 +17,11 @@
                                  emptyMessage="Pas d'article trouvé avec les critères donnés" 
                                  style="margin-bottom:20px" filteredValue="#{articleJSF.articlesFilteredSelect}"
                                  widgetVar="articleTable"
-                                 selectionMode="single" selection="#{articleJSF.selected}" rowKey="#{article.id}">
-
+                                 selectionMode="single" selection="#{articleJSF.selected}" rowKey="#{article.id}"
+                                 paginator="true"
+                                 rows="13"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 >
                         <f:facet name="header">
                             Liste d'articles
                         </f:facet>

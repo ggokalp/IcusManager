@@ -36,7 +36,7 @@ public class Listedeprix implements Serializable {
     @Column(name = "LIBELLE")
     private String libelle;
     @Column(name = "FAMILLE")
-    private Integer famille;
+    private String famille;
     @Basic(optional = false)
     @NotNull
     @Column(name = "PRIXVENTE")
@@ -74,11 +74,11 @@ public class Listedeprix implements Serializable {
         this.libelle = libelle;
     }
 
-    public Integer getFamille() {
+    public String getFamille() {
         return famille;
     }
 
-    public void setFamille(Integer famille) {
+    public void setFamille(String famille) {
         this.famille = famille;
     }
 

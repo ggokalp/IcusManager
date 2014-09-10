@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package gokalp.icus.entity;
 
 import java.io.Serializable;
@@ -21,7 +15,6 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
  * @author My Caruba
  */
 @Entity
@@ -62,7 +55,7 @@ public class Article implements Serializable {
     @Column(name = "LIBELLEEN")
     private String libelleen;
     @Column(name = "FAMILLE")
-    private Integer famille;
+    private String famille;
     @Basic(optional = false)
     @NotNull
     @Column(name = "PRIXACHAT")
@@ -132,11 +125,11 @@ public class Article implements Serializable {
         this.libelleen = libelleen;
     }
 
-    public Integer getFamille() {
+    public String getFamille() {
         return famille;
     }
 
-    public void setFamille(Integer famille) {
+    public void setFamille(String famille) {
         this.famille = famille;
     }
 
