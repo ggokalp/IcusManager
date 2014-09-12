@@ -41,4 +41,28 @@ public class DevisGeneralEJB {
         return devis;
     }
     
+    public boolean addDevis(Devisgeneral devis){
+        System.out.println("Add devis general ejb");
+        em.persist(devis);
+        return true;
+    }
+    
+    public boolean delDevis(int iddevis){
+        System.out.println("Del devis general ejb");
+        Devisgeneral devis = em.find(Devisgeneral.class, iddevis);
+        if(devis != null){
+            em.remove(devis);
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean editDevis(Devisgeneral devis){
+        System.out.println("Update devis general ejb");
+        if(devis != null){
+            em.merge(devis);
+            return true;
+        }
+        return false;
+    }
 }

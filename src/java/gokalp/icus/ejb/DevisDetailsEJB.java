@@ -6,7 +6,7 @@
 
 package gokalp.icus.ejb;
 
-import gokalp.icus.entity.Devisgeneral;
+import gokalp.icus.entity.Devisdetails;
 import java.util.Collection;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -22,9 +22,41 @@ public class DevisDetailsEJB {
     @PersistenceContext(unitName="IcusManagerPU")
     private EntityManager em;
     
-    public Collection<Devisgeneral> getDevis() {
-        Query query = em.createNamedQuery("Devisgeneral.findAll");
-        Collection<Devisgeneral> devis = query.getResultList();
+    public Collection<Devisdetails> getDevis() {
+        Query query = em.createNamedQuery("Devisdetails.findAll");
+        Collection<Devisdetails> devis = query.getResultList();
         return devis;
+    }
+    
+    public Collection<Devisdetails> getDevis(int iddevis) {
+        Query query = em.createNamedQuery("Devisdetails.findByIddevis");
+        query.setParameter("iddevis", iddevis);
+        Collection<Devisdetails> devis = query.getResultList();
+        return devis;
+    }
+    
+    public boolean addDevis(Devisdetails devis){
+        System.out.println("Add devis details ejb");
+        em.persist(devis);
+        return true;
+    }
+    
+    public boolean delDevis(int iddevis){
+        System.out.println("Del devis details ejb");
+        Devisdetails devis = em.find(Devisdetails.class, iddevis);
+        if(devis != null){
+            em.remove(devis);
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean editDevis(Devisdetails devis){
+        System.out.println("Update devis details ejb");
+        if(devis != null){
+            em.merge(devis);
+            return true;
+        }
+        return false;
     }
 }
