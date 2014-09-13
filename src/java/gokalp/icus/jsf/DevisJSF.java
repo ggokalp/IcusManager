@@ -40,9 +40,9 @@ public class DevisJSF implements Serializable {
     public List<Devisgeneral> getDevisg() {
         if (devisg.isEmpty()) {
             if (client != null) {
-                devisg = (List<Devisgeneral>) facade.getDevis(client.getSociete());
+                devisg = (List<Devisgeneral>) facade.getDevisGeneral(client.getSociete());
             } else {
-                devisg = (List<Devisgeneral>) facade.getDevis();
+                devisg = (List<Devisgeneral>) facade.getDevisGeneral();
             }
         }
         return devisg;
@@ -65,10 +65,12 @@ public class DevisJSF implements Serializable {
     }
 
     public void setSelected(Devisgeneral selected) {
+        this.devisd = (List<Devisdetails>) facade.getDevisDetails(selected.getId());
         this.selected = selected;
     }
 
-    public void setClient(Client client) {
+    public String setClient(Client client) {
         this.client = client;
+        return "voirdevis";
     }
 }

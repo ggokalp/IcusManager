@@ -9,18 +9,20 @@
         <title>Devis : Listing des devis</title>
     </h:head>
     <h:body>
-        <!--@TODO Error on loading list of price ! -->
         <p:layout style="min-width:400px;min-height:790px;max-height:805px">
             <ui:include src="menu_left.xhtml"/>
             <p:layoutUnit position="center">
                 <h:form id="ftDevis">
                     <p:dataTable id="tableDevisGeneraux" var="devisg" value="#{devisJSF.devisg}" 
-                                 style="margin-bottom:20px" editable="true">
-
-                        <p:ajax event="rowEdit" listener="#{listeDePrixJSF.onRowEdit}" />
+                                 selectionMode="single" selection="#{devisJSF.selected}" rowKey="#{devisg.id}"
+                                 paginator="true"
+                                 rows="5"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 style="margin-bottom:20px">
                         <f:facet name="header">
-                            Liste de prix
+                            Devis
                         </f:facet>
+                        <p:ajax event="rowSelect" update=":ftDevis" />
                         <p:column headerText="Numéro de pièce">
                             <h:outputText value="#{devisg.nopiece}" />
                         </p:column>
@@ -58,33 +60,29 @@
                             <h:outputText value="#{devisg.totalttc}" />
                         </p:column>
                     </p:dataTable>
-                    <p:dataTable id="tableArticleAAjouter" 
-                                 var="article" 
-                                 value="#{articleJSF.articles}" 
-                                 widgetVar="articleTable" 
-                                 selectionMode="single" 
-                                 selection="#{articleJSF.selected}" 
-                                 rowKey="#{article.id}"
-                                 paginator="true"
-                                 rows="13"
-                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 >
-
+                    <p:dataTable id="tableDevisDetails" var="devisd" value="#{devisJSF.devisd}"
+                                 style="margin-bottom:20px">
                         <f:facet name="header">
-                            Article à ajouter
+                            Devis
                         </f:facet>
-                        <p:column headerText="Libellé" filterMatchMode="contains">
-                            <h:outputText value="#{article.libellefr}" />
+                        <p:column headerText="Numéro de pièce">
+                            <h:outputText value="#{devisd.nopiece}" />
                         </p:column>
-                        <p:column headerText="Famille" filterMatchMode="contains">
-                            <h:outputText value="#{article.famille}" />
+                        <p:column headerText="Description">
+                            <h:outputText value="#{devisd.descritpion}" />
                         </p:column>
-                        <p:column headerText="Prix Vente" filterMatchMode="contains">
-                            <h:outputText value="#{article.prixvente}" />
+                        <p:column headerText="Quantité">
+                            <h:outputText value="#{devisd.quantite}" />
                         </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton value="Ajouter" action="#{listeDePrixJSF.addArticle(articleJSF.selected)}" update=":ftArticle"/>
-                        </f:facet>
+                        <p:column headerText="Prix hors tva">
+                            <h:outputText value="#{devisd.prixht}" />
+                        </p:column>
+                        <p:column headerText="Prix total hors tva">
+                            <h:outputText value="#{devisd.prixtotht}" />
+                        </p:column>
+                        <p:column headerText="Article">
+                            <h:outputText value="#{devisd.article}" />
+                        </p:column>
                     </p:dataTable>
                 </h:form>
             </p:layoutUnit>

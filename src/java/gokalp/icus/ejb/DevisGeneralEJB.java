@@ -8,6 +8,7 @@ package gokalp.icus.ejb;
 
 import gokalp.icus.entity.Devisgeneral;
 import java.util.Collection;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -16,6 +17,7 @@ import javax.persistence.Query;
  *
  * @author My Caruba
  */
+@Stateless
 public class DevisGeneralEJB {
 
     @PersistenceContext(unitName="IcusManagerPU")
