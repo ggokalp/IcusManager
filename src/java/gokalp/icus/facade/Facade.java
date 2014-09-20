@@ -144,7 +144,7 @@ public class Facade {
         return devisDEJB.getDevis(iddevis);
     }
     
-    public boolean cloneDevis(Devisgeneral devis){
+    public Devisgeneral cloneDevis(Devisgeneral devis){
         return devisGEJB.cloneDevis(devis);
     }
 }

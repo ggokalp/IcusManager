@@ -6,6 +6,7 @@
 
 package gokalp.icus.ejb;
 
+import com.google.common.collect.Iterables;
 import gokalp.icus.entity.Devisgeneral;
 import java.util.Collection;
 import javax.ejb.Stateless;
@@ -33,6 +34,7 @@ public class DevisGeneralEJB {
         Query query = em.createNamedQuery("Devisgeneral.findByIdclient");
         query.setParameter("idclient", idClient);
         Collection<Devisgeneral> devis = query.getResultList();
+        Iterables.get(devis,0).getDevisdetailsCollection().size();
         return devis;
     }
     
@@ -40,6 +42,7 @@ public class DevisGeneralEJB {
         Query query = em.createNamedQuery("Devisgeneral.findBySociete");
         query.setParameter("societe", nomClient);
         Collection<Devisgeneral> devis = query.getResultList();
+        Iterables.get(devis,0).getDevisdetailsCollection().size();
         return devis;
     }
     
@@ -68,13 +71,16 @@ public class DevisGeneralEJB {
         return false;
     }
     
-    public boolean cloneDevis(Devisgeneral devis){
+    public Devisgeneral cloneDevis(Devisgeneral devis){
         System.out.println("Clone devis general ejb");
         if(devis != null){
             devis.setId(null);
+            
             em.persist(devis);
-            return true;
+            // We want to get the new duplicated object
+            em.flush();
+            return devis;
         }
-        return false;
+        return null;
     }
 }

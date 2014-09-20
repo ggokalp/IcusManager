@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gokalp.icus.entity;
 
+import com.google.common.collect.Iterables;
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,13 +17,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author My Caruba
+ * @author Garcian
  */
 @Entity
 @Table(name = "DEVISGENERAL")
@@ -44,6 +48,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Devisgeneral.findByTotaltva", query = "SELECT d FROM Devisgeneral d WHERE d.totaltva = :totaltva"),
     @NamedQuery(name = "Devisgeneral.findByTotalttc", query = "SELECT d FROM Devisgeneral d WHERE d.totalttc = :totalttc")})
 public class Devisgeneral implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -89,12 +94,18 @@ public class Devisgeneral implements Serializable {
     private Double totaltva;
     @Column(name = "TOTALTTC")
     private Double totalttc;
+    @OneToMany(mappedBy = "iddevis",cascade = CascadeType.ALL)
+    private Collection<Devisdetails> devisdetailsCollection;
 
     public Devisgeneral() {
     }
 
     public Devisgeneral(Integer id) {
         this.id = id;
+    }
+
+    public Devisgeneral(Devisgeneral selected) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Integer getId() {
@@ -217,6 +228,15 @@ public class Devisgeneral implements Serializable {
         this.totalttc = totalttc;
     }
 
+    @XmlTransient
+    public Collection<Devisdetails> getDevisdetailsCollection() {
+        return devisdetailsCollection;
+    }
+
+    public void setDevisdetailsCollection(Collection<Devisdetails> devisdetailsCollection) {
+        this.devisdetailsCollection = devisdetailsCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -241,5 +261,30 @@ public class Devisgeneral implements Serializable {
     public String toString() {
         return "gokalp.icus.entity.Devisgeneral[ id=" + id + " ]";
     }
-    
+
+    public Devisgeneral(String nopiece, String datepiece, String status, String dateecheance, Integer idclient, String societe, String codetarif, String refer, String remarque, String transfere, String derniertransfert, Double totalht, Double totaltva, Double totalttc, Collection<Devisdetails> devisdetailsCollection) {
+        this.nopiece = nopiece;
+        this.datepiece = datepiece;
+        this.status = status;
+        this.dateecheance = dateecheance;
+        this.idclient = idclient;
+        this.societe = societe;
+        this.codetarif = codetarif;
+        this.refer = refer;
+        this.remarque = remarque;
+        this.transfere = transfere;
+        this.derniertransfert = derniertransfert;
+        this.totalht = totalht;
+        this.totaltva = totaltva;
+        this.totalttc = totalttc;
+        this.devisdetailsCollection = devisdetailsCollection;
+    }
+
+    public Devisgeneral copy() {
+        Devisgeneral devis = new Devisgeneral(nopiece, datepiece, status, dateecheance, idclient, societe, codetarif, refer, remarque, transfere, derniertransfert, totalht, totaltva, totalttc, devisdetailsCollection);
+        for (Devisdetails devisdet : devis.devisdetailsCollection) {
+            devisdet.setId(null);
+        }
+        return devis;
+    }
 }

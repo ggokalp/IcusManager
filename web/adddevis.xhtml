@@ -1,12 +1,35 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Devis: Ajouter</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <p:layout style="min-width:400px;min-height:790px;max-height:805px">
+            <ui:include src="menu_left.xhtml"/>
+            <p:layoutUnit position="center">
+                <h:form>
+                    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+                        <h:outputText value="Date échéanche: "/><p:inputText value="#{devisJSF.clone.dateecheance}" maxlength="10"/>
+                        <h:outputText value="Status: " /><p:inputText value="#{devisJSF.clone.status}" maxlength="10"/>
+                        <h:outputText value="Société: " /><p:inputText value="#{devisJSF.clone.societe}" maxlength="100"/>
+                        <h:outputText value="Code Tarif: " /><p:inputText value="#{devisJSF.clone.codetarif}" maxlength="100"/>
+                        <h:outputText value="Référence: " /><p:inputText value="#{devisJSF.clone.refer}" maxlength="100"/>
+                        <h:outputText value="Remarque: " /><p:inputTextarea value="#{devisJSF.clone.remarque}" rows="6" cols="50" maxlength="1000"/>
+                        <h:outputText value="Transferé: " /><p:inputText value="#{devisJSF.clone.transfere}" maxlength="10"/>
+                        <h:outputText value="Dernier transfert: " /><p:inputText value="#{devisJSF.clone.derniertransfert}" maxlength="20"/>
+                        <h:outputText value="Total Hors TVA: " /><h:outputText value="#{devisJSF.clone.totalht}"/>
+                        <h:outputText value="Total TVA: " /><h:outputText value="#{devisJSF.clone.totaltva}"/>
+                        <h:outputText value="Total TTC: " /><h:outputText value="#{devisJSF.clone.totalttc}" />  
+                    </h:panelGrid>
+                    <h:commandButton value="Ajouter" style="margin-left: 20px" action="#{devisJSF.appliquerModif()}"/>
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
     </h:body>
 </html>
 

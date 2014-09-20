@@ -45,12 +45,13 @@
                             <h:outputText value="#{devisg.totalttc}" />
                         </p:column>
                         <f:facet name="footer">
-                            <p:commandButton value="Ajouter" action="ajoutDevis" />
-                            <p:commandButton value="Dupliquer" action="#{devisJSF.duppliquerDevis()}" />
-                            <p:commandButton value="Supprimer" action="#{devisJSF.supprimerDevis()}" />
+                            <p:commandButton value="Ajouter" action="#{devisJSF.ajouterDevis()}" />
+                            <p:commandButton value="Editer" action="#{devisJSF.editerDevis()}" />
+                            <p:commandButton value="Dupliquer" action="#{devisJSF.duppliquerDevis()}" update=":ftDevis" />
+                            <p:commandButton value="Supprimer" action="#{devisJSF.supprimerDevis()}" update=":ftDevis"/>
                         </f:facet>
                     </p:dataTable>
-                    <p:dataTable id="tableDevisDetails" var="devisd" value="#{devisJSF.devisd}"
+                    <p:dataTable id="tableDevisDetails" var="devisd" value="#{devisJSF.selected.devisdetailsCollection}"
                                  style="margin-bottom:20px">
                         <f:facet name="header">
                             Devis

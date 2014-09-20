@@ -10,7 +10,8 @@ CREATE TABLE devisdetails (
 	prixht double,
 	quantite integer,
 	prixtotht double,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	foreign key (iddevis) references devisgeneral(id)
 );
 
 -- COmment

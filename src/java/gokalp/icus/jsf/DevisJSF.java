@@ -5,6 +5,7 @@
  */
 package gokalp.icus.jsf;
 
+import com.sun.xml.ws.developer.Serialization;
 import gokalp.icus.entity.Client;
 import gokalp.icus.entity.Devisdetails;
 import gokalp.icus.entity.Devisgeneral;
@@ -28,13 +29,14 @@ public class DevisJSF implements Serializable {
     private Facade facade;
 
     private List<Devisgeneral> devisg;
-    private List<Devisdetails> devisd;
     private Devisgeneral selected;
+    private Devisgeneral clone;
     private Client client;
+    private boolean edit;
 
     public DevisJSF() {
         devisg = new ArrayList<>();
-        devisd = new ArrayList<>();
+        edit = false;
     }
 
     public List<Devisgeneral> getDevisg() {
@@ -52,21 +54,20 @@ public class DevisJSF implements Serializable {
         this.devisg = devisg;
     }
 
-    public List<Devisdetails> getDevisd() {
-        return devisd;
-    }
-
-    public void setDevisd(List<Devisdetails> devisd) {
-        this.devisd = devisd;
-    }
-
     public Devisgeneral getSelected() {
         return selected;
     }
 
     public void setSelected(Devisgeneral selected) {
-        this.devisd = (List<Devisdetails>) facade.getDevisDetails(selected.getId());
         this.selected = selected;
+    }
+
+    public Devisgeneral getClone() {
+        return clone;
+    }
+
+    public void setClone(Devisgeneral clone) {
+        this.clone = clone;
     }
 
     public String setClient(Client client) {
@@ -74,11 +75,39 @@ public class DevisJSF implements Serializable {
         return "voirdevis";
     }
     
-    public void duppliquerDevis(){
-        facade.cloneDevis(selected);
+    public String ajouterDevis(){
+        clone = new Devisgeneral();
+        edit = false;
+        return "ajoutDevis";
     }
     
-    public void supprimerDevis(){
+    public String editerDevis(){
+        clone = selected;
+        edit = true;
+        return "ajoutDevis";
+    }
+
+    public String duppliquerDevis() {
+        System.out.println("duppliquerDevis() id selected : "+selected.getId());
+        clone = facade.cloneDevis(selected.copy());
+        System.out.println("duppliquerDevis() id clone : "+clone.getId());
+        edit = true;
+        devisg = (List<Devisgeneral>) facade.getDevisGeneral();
+        return "ajoutDevis";
+    }
+
+    public void supprimerDevis() {
         facade.delDevisGeneral(selected.getId());
+        devisg = (List<Devisgeneral>) facade.getDevisGeneral();
+    }
+    
+    public void appliquerModif(){
+        if(edit){
+            System.out.println("Edit appliquer Modif "+clone.getDateecheance());
+            facade.editDevisGeneral(clone);
+        }else{
+            facade.addDevisGeneral(clone);
+        }
+        devisg = (List<Devisgeneral>) facade.getDevisGeneral();
     }
 }

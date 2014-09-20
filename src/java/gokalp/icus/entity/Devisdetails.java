@@ -8,11 +8,14 @@ package gokalp.icus.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -21,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author My Caruba
+ * @author Garcian
  */
 @Entity
 @Table(name = "DEVISDETAILS")
@@ -29,7 +32,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Devisdetails.findAll", query = "SELECT d FROM Devisdetails d"),
     @NamedQuery(name = "Devisdetails.findById", query = "SELECT d FROM Devisdetails d WHERE d.id = :id"),
-    @NamedQuery(name = "Devisdetails.findByIddevis", query = "SELECT d FROM Devisdetails d WHERE d.iddevis = :iddevis"),
     @NamedQuery(name = "Devisdetails.findByNopiece", query = "SELECT d FROM Devisdetails d WHERE d.nopiece = :nopiece"),
     @NamedQuery(name = "Devisdetails.findByArticle", query = "SELECT d FROM Devisdetails d WHERE d.article = :article"),
     @NamedQuery(name = "Devisdetails.findByDescritpion", query = "SELECT d FROM Devisdetails d WHERE d.descritpion = :descritpion"),
@@ -43,8 +45,6 @@ public class Devisdetails implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID")
     private Integer id;
-    @Column(name = "IDDEVIS")
-    private Integer iddevis;
     @Size(max = 100)
     @Column(name = "NOPIECE")
     private String nopiece;
@@ -61,6 +61,9 @@ public class Devisdetails implements Serializable {
     private Integer quantite;
     @Column(name = "PRIXTOTHT")
     private Double prixtotht;
+    @JoinColumn(name = "IDDEVIS", referencedColumnName = "ID")
+    @ManyToOne(targetEntity = Devisgeneral.class, cascade = CascadeType.ALL)
+    private Devisgeneral iddevis;
 
     public Devisdetails() {
     }
@@ -75,14 +78,6 @@ public class Devisdetails implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getIddevis() {
-        return iddevis;
-    }
-
-    public void setIddevis(Integer iddevis) {
-        this.iddevis = iddevis;
     }
 
     public String getNopiece() {
@@ -131,6 +126,14 @@ public class Devisdetails implements Serializable {
 
     public void setPrixtotht(Double prixtotht) {
         this.prixtotht = prixtotht;
+    }
+
+    public Devisgeneral getIddevis() {
+        return iddevis;
+    }
+
+    public void setIddevis(Devisgeneral iddevis) {
+        this.iddevis = iddevis;
     }
 
     @Override
