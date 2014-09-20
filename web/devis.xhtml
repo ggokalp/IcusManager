@@ -6,15 +6,77 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Client: Listing</title>
+        <title>Devis : Listing des devis</title>
     </h:head>
     <h:body>
         <p:layout style="min-width:400px;min-height:790px;max-height:805px">
             <ui:include src="menu_left.xhtml"/>
             <p:layoutUnit position="center">
-                
+                <h:form id="ftDevis">
+                    <p:dataTable id="tableDevisGeneraux" var="devisg" value="#{devisJSF.devisg}" 
+                                 selectionMode="single" selection="#{devisJSF.selected}" rowKey="#{devisg.id}"
+                                 paginator="true"
+                                 rows="5"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 style="margin-bottom:20px">
+                        <f:facet name="header">
+                            Devis
+                        </f:facet>
+                        <p:ajax event="rowSelect" update=":ftDevis" />
+                        <p:column headerText="Status Devis">
+                            <h:outputText value="#{devisg.status}" />
+                        </p:column>
+                        <p:column headerText="Date échéance">
+                            <h:outputText value="#{devisg.dateecheance}" />
+                        </p:column>
+                        <p:column headerText="Société">
+                            <h:outputText value="#{devisg.societe}" />
+                        </p:column>
+                        <p:column headerText="Remarque">
+                            <h:outputText value="#{devisg.remarque}" />
+                        </p:column>
+                        <p:column headerText="Total HT">
+                            <h:outputText value="#{devisg.totalht}" />
+                        </p:column>
+                        <p:column headerText="total tva">
+                            <h:outputText value="#{devisg.totaltva}" />
+                        </p:column>
+                        <p:column headerText="Total TTC">
+                            <h:outputText value="#{devisg.totalttc}" />
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton value="Ajouter" action="#{devisJSF.ajouterDevis()}" />
+                            <p:commandButton value="Editer" action="#{devisJSF.editerDevis()}" />
+                            <p:commandButton value="Dupliquer" action="#{devisJSF.duppliquerDevis()}" update=":ftDevis" />
+                            <p:commandButton value="Supprimer" action="#{devisJSF.supprimerDevis()}" update=":ftDevis"/>
+                        </f:facet>
+                    </p:dataTable>
+                    <p:dataTable id="tableDevisDetails" var="devisd" value="#{devisJSF.selected.devisdetailsCollection}"
+                                 style="margin-bottom:20px">
+                        <f:facet name="header">
+                            Devis
+                        </f:facet>
+                        <p:column headerText="Numéro de pièce">
+                            <h:outputText value="#{devisd.nopiece}" />
+                        </p:column>
+                        <p:column headerText="Description">
+                            <h:outputText value="#{devisd.descritpion}" />
+                        </p:column>
+                        <p:column headerText="Quantité">
+                            <h:outputText value="#{devisd.quantite}" />
+                        </p:column>
+                        <p:column headerText="Prix hors tva">
+                            <h:outputText value="#{devisd.prixht}" />
+                        </p:column>
+                        <p:column headerText="Prix total hors tva">
+                            <h:outputText value="#{devisd.prixtotht}" />
+                        </p:column>
+                        <p:column headerText="Article">
+                            <h:outputText value="#{devisd.article}" />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
             </p:layoutUnit>
         </p:layout>
     </h:body>
 </html>
-

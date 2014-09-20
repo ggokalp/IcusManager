@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package gokalp.icus.entity;
 
 import java.io.Serializable;
@@ -13,6 +18,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ *
  * @author My Caruba
  */
 @Entity
@@ -27,16 +33,19 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Listedeprix.findByLibelle", query = "SELECT l FROM Listedeprix l WHERE l.libelle = :libelle"),
     @NamedQuery(name = "Listedeprix.findByFamille", query = "SELECT l FROM Listedeprix l WHERE l.famille = :famille"),
     @NamedQuery(name = "Listedeprix.findByPrixvente", query = "SELECT l FROM Listedeprix l WHERE l.prixvente = :prixvente"),
-    @NamedQuery(name = "Listedeprix.findByListenomAndIdClient", query = "SELECT l FROM Listedeprix l WHERE l.listedeprixPK.idclient = :idclient AND l.listedeprixPK.listenom = :listenom")})
+    @NamedQuery(name = "Listedeprix.findByListenomAndIdClient", query = "SELECT l FROM Listedeprix l WHERE l.listedeprixPK.idclient = :idclient AND l.listedeprixPK.listenom = :listenom")
+})
 public class Listedeprix implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ListedeprixPK listedeprixPK;
     @Size(max = 1500)
     @Column(name = "LIBELLE")
     private String libelle;
+    @Size(max = 20)
     @Column(name = "FAMILLE")
-    private Integer famille;
+    private String famille;
     @Basic(optional = false)
     @NotNull
     @Column(name = "PRIXVENTE")
@@ -74,11 +83,11 @@ public class Listedeprix implements Serializable {
         this.libelle = libelle;
     }
 
-    public Integer getFamille() {
+    public String getFamille() {
         return famille;
     }
 
-    public void setFamille(Integer famille) {
+    public void setFamille(String famille) {
         this.famille = famille;
     }
 
@@ -114,5 +123,5 @@ public class Listedeprix implements Serializable {
     public String toString() {
         return "gokalp.icus.entity.Listedeprix[ listedeprixPK=" + listedeprixPK + " ]";
     }
-    
+
 }

@@ -15,11 +15,11 @@
                 <h:form>
                     <p:dataTable id="tableClient" var="client" value="#{clientJSF.client}" 
                                  emptyMessage="Pas de société trouvée avec les critères donnés" 
-                                 style="margin-bottom:20px" filteredValue="#{clientJSF.clientFilteredSelect}"
+                                 style="margin-bottom:20px" resizableColumns="true"
+                                 filteredValue="#{clientJSF.clientFilteredSelect}"
                                  widgetVar="clientTable"
                                  selectionMode="single" selection="#{clientJSF.selected}" rowKey="#{client.id}"
-                                 paginator="true"
-                                 rows="20"
+                                 paginator="true" rows="15"
                                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  >
 
@@ -42,68 +42,69 @@
                         <p:column filterBy="#{client.modereglement}" headerText="Mode de réglement" filterMatchMode="contains">
                             <h:outputText value="#{client.modereglement}" />
                         </p:column>
-                        <p:column filterBy="#{client.remise}" headerText="Remise" filterMatchMode="contains">
+                        <p:column filterBy="#{client.remise}" headerText="Remise (%)" filterMatchMode="contains">
                             <h:outputText value="#{client.remise}" />
                         </p:column>
                         <p:column filterBy="#{client.dernierecommande}" headerText="Dernière commande" filterMatchMode="contains">
-                            <h:outputText value="#{client.dernierecommande}" />
+                            <h:outputText value="#{client.dernierecommande.replace('-', '/')}" />
                         </p:column>
                         <p:rowExpansion>
-                            <p:panelGrid  columns="2" columnClasses="label,value" style="width:400px">
+                            <p:tabView>
+                                <p:tab title="Client">
+                                    <p:panelGrid  columns="2" columnClasses="label,value">
 
-                                <h:outputText value="Adresse de facturation" /><br/>
+                                        <h:outputText value="Adresse de facturation" style="font-weight:bold"/><br/>
+                                        <h:outputText value="Rue:" />
+                                        <h:outputText value="#{client.adrue}" style="width: 500px"/>
+                                        <h:outputText value="Ville:" />
+                                        <h:outputText value="#{client.adville}" />
+                                        <h:outputText value="Code Postale" />
+                                        <h:outputText value="#{client.adcp}" />
 
-                                <h:outputText value="Rue" />
-                                <h:outputText value="#{client.adrue}" />
+                                        <h:outputText value="Adresse de Livraison" style="font-weight:bold"/><br/>
+                                        <h:outputText value="Rue" />
+                                        <h:outputText value="#{client.adlivrue}" />
+                                        <h:outputText value="Ville" />
+                                        <h:outputText value="#{client.adlivville}" />
+                                        <h:outputText value="Code Postale" />
+                                        <h:outputText value="#{client.adlivcp}" />
 
-                                <h:outputText value="Ville" />
-                                <h:outputText value="#{client.adville}" />
+                                        <h:outputText value="Législation" style="font-weight:bold"/><br/>
+                                        <h:outputText value="Société" />
+                                        <h:outputText value="#{client.societe}" />
+                                        <h:outputText value="TVA" />
+                                        <h:outputText value="#{client.modetva}" />
+                                        <h:outputText value="Numéro entreprise" />
+                                        <h:outputText value="#{client.numentreprise}" />
+                                        <h:outputText value="Pays" />
+                                        <h:outputText value="#{client.pays}" />
 
-                                <h:outputText value="Code Postale" />
-                                <h:outputText value="#{client.adcp}" />
+                                    </p:panelGrid>
+                                </p:tab>
+                                <p:tab title="Icus">
+                                    <p:panelGrid  columns="2" columnClasses="label,value">
+                                        <h:outputText value="Client bloqué:" style="font-weight:bold"/>
+                                        <h:outputText value="#{client.bloque == 1? 'Oui' : 'Non'}" />
 
-                                <h:outputText value="Adresse de Livraison" /><br/>
+                                        <h:outputText value="Remarque:" style="font-weight:bold"/>
+                                        <h:outputText value="#{client.remarque}" />
 
-                                <h:outputText value="Rue" />
-                                <h:outputText value="#{client.adlivrue}" />
+                                        <h:outputText value="Remise (%):" style="font-weight:bold"/>
+                                        <h:outputText value="#{client.remise}" />
 
-                                <h:outputText value="Ville" />
-                                <h:outputText value="#{client.adlivville}" />
+                                        <h:outputText value="Représentant:" style="font-weight:bold"/>
+                                        <h:outputText value="#{client.representant}" />
 
-                                <h:outputText value="Code Postale" />
-                                <h:outputText value="#{client.adlivcp}" />
-
-                                <h:outputText value="TVA" />
-                                <h:outputText value="#{client.modetva}" />
-
-                                <h:outputText value="Rue" />
-                                <h:outputText value="#{client.numentreprise}" />
-
-                                <h:outputText value="Pays" />
-                                <h:outputText value="#{client.pays}" />
-
-                                <h:outputText value="Bloqué ?" />
-                                <h:outputText value="#{client.bloque}" />
-
-                                <h:outputText value="Remarque" />
-                                <h:outputText value="#{client.remarque}" />
-
-                                <h:outputText value="Remise" />
-                                <h:outputText value="#{client.remise}" />
-
-                                <h:outputText value="Représentant" />
-                                <h:outputText value="#{client.representant}" />
-
-                                <h:outputText value="Société" />
-                                <h:outputText value="#{client.societe}" />
-
-                                <h:outputText value="Tarif" />
-                                <h:outputText value="#{client.tarif}" />
-                            </p:panelGrid>
+                                        <h:outputText value="Tarif:" style="font-weight:bold"/>
+                                        <h:outputText value="#{client.tarif}" />
+                                    </p:panelGrid>
+                                </p:tab>
+                            </p:tabView>
                         </p:rowExpansion>
                         <f:facet name="footer">
                             <p:commandButton value="Modifier" action="modifierClient" />
                             <p:commandButton value="Nouvelle liste de prix" action="#{listeDePrixJSF.setIdClient(clientJSF.selected.id)}" />
+                            <p:commandButton value="Voir devis" action="#{devisJSF.setClient(clientJSF.selected)}" />
                         </f:facet>
                     </p:dataTable>
                     <!-- TODO 1: Créer DB table, entité, bean,... clients

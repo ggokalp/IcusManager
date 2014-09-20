@@ -2,10 +2,14 @@ package gokalp.icus.facade;
 
 import gokalp.icus.ejb.ArticleEJB;
 import gokalp.icus.ejb.ClientEJB;
+import gokalp.icus.ejb.DevisDetailsEJB;
+import gokalp.icus.ejb.DevisGeneralEJB;
 import gokalp.icus.ejb.ListeDePrixEJB;
 import gokalp.icus.ejb.MenuEJB;
 import gokalp.icus.entity.Article;
 import gokalp.icus.entity.Client;
+import gokalp.icus.entity.Devisgeneral;
+import gokalp.icus.entity.Devisdetails;
 import gokalp.icus.entity.Listedeprix;
 import gokalp.icus.entity.Menu;
 import java.util.Collection;
@@ -27,6 +31,10 @@ public class Facade {
     private ArticleEJB  articleEJB;
     @EJB
     private ListeDePrixEJB listeEJB;
+    @EJB
+    private DevisGeneralEJB devisGEJB;
+    @EJB
+    private DevisDetailsEJB devisDEJB;
 
     public Collection<Menu> getMenu() {
         System.out.println("facade menu");
@@ -102,5 +110,41 @@ public class Facade {
     
     public boolean editListeDePrix(Listedeprix liste){
         return listeEJB.editListeDePrix(liste);
+    }
+    
+    public Collection<Devisgeneral> getDevisGeneral(){
+        return devisGEJB.getDevis();
+    }
+    
+    public Collection<Devisgeneral> getDevisGeneral(int idClient){
+        return devisGEJB.getDevis(idClient);
+    }
+    
+    public Collection<Devisgeneral> getDevisGeneral(String nomClient){
+        return devisGEJB.getDevis(nomClient);
+    }
+    
+    public boolean addDevisGeneral(Devisgeneral devis){
+        return devisGEJB.addDevis(devis);
+    }
+    
+    public boolean delDevisGeneral(int iddevis){
+        return devisGEJB.delDevis(iddevis);
+    }
+    
+    public boolean editDevisGeneral(Devisgeneral devis){
+        return devisGEJB.editDevis(devis);
+    }
+    
+    public Collection<Devisdetails> getDevisDetails(){
+        return devisDEJB.getDevis();
+    }
+    
+    public Collection<Devisdetails> getDevisDetails(int iddevis){
+        return devisDEJB.getDevis(iddevis);
+    }
+    
+    public Devisgeneral cloneDevis(Devisgeneral devis){
+        return devisGEJB.cloneDevis(devis);
     }
 }

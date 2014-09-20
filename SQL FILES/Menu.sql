@@ -8,7 +8,7 @@ CREATE TABLE menu (
   utilisateur int,
   droit int,
   PRIMARY KEY (id),
-  UNIQUE(code),
+  UNIQUE(code)
 );
 
 
