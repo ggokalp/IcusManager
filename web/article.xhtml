@@ -15,11 +15,10 @@
                 <h:form id="ftArticle">
                     <p:dataTable id="tableArticle" var="article" value="#{articleJSF.articles}" 
                                  emptyMessage="Pas d'article trouvé avec les critères donnés" 
-                                 style="margin-bottom:20px" filteredValue="#{articleJSF.articlesFilteredSelect}"
+                                 style="margin-bottom:20px" filteredValue="#{articleJSF.articlesFilteredSelect}" resizableColumns="true"
                                  widgetVar="articleTable"
                                  selectionMode="single" selection="#{articleJSF.selected}" rowKey="#{article.id}"
-                                 paginator="true"
-                                 rows="13"
+                                 paginator="true" rows="15"
                                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  >
                         <f:facet name="header">

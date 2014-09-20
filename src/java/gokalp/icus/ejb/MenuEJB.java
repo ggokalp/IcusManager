@@ -21,7 +21,7 @@ public class MenuEJB {
         System.out.println("ejb menu");
         Query query = em.createNamedQuery("Menu.findAll");
         Collection<Menu> menu = query.getResultList();
-        System.out.println("ejb fin getmenu");
+        System.out.println("MenuEJB: getMenus() : ejb fin getmenu");
         return menu;
     }
 }
