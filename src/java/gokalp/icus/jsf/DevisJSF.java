@@ -5,13 +5,14 @@
  */
 package gokalp.icus.jsf;
 
-import com.sun.xml.ws.developer.Serialization;
 import gokalp.icus.entity.Client;
-import gokalp.icus.entity.Devisdetails;
 import gokalp.icus.entity.Devisgeneral;
 import gokalp.icus.facade.Facade;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -33,10 +34,20 @@ public class DevisJSF implements Serializable {
     private Devisgeneral clone;
     private Client client;
     private boolean edit;
+    private Date dateClone;
 
     public DevisJSF() {
         devisg = new ArrayList<>();
         edit = false;
+        dateClone = new Date();
+    }
+
+    public Date getDateClone() {
+        return dateClone;
+    }
+
+    public void setDateClone(Date dateClone) {
+        this.dateClone = dateClone;
     }
 
     public List<Devisgeneral> getDevisg() {
@@ -68,29 +79,30 @@ public class DevisJSF implements Serializable {
 
     public void setClone(Devisgeneral clone) {
         this.clone = clone;
+        System.out.println("setClone: " + this.clone.getSociete());
     }
 
     public String setClient(Client client) {
         this.client = client;
         return "voirdevis";
     }
-    
-    public String ajouterDevis(){
+
+    public String ajouterDevis() {
         clone = new Devisgeneral();
         edit = false;
         return "ajoutDevis";
     }
-    
-    public String editerDevis(){
+
+    public String editerDevis() {
         clone = selected;
         edit = true;
         return "ajoutDevis";
     }
 
     public String duppliquerDevis() {
-        System.out.println("duppliquerDevis() id selected : "+selected.getId());
+        System.out.println("duppliquerDevis() id selected : " + selected.getId());
         clone = facade.cloneDevis(selected.copy());
-        System.out.println("duppliquerDevis() id clone : "+clone.getId());
+        System.out.println("duppliquerDevis() id clone : " + clone.getId());
         edit = true;
         devisg = (List<Devisgeneral>) facade.getDevisGeneral();
         return "ajoutDevis";
@@ -100,12 +112,17 @@ public class DevisJSF implements Serializable {
         facade.delDevisGeneral(selected.getId());
         devisg = (List<Devisgeneral>) facade.getDevisGeneral();
     }
-    
-    public void appliquerModif(){
-        if(edit){
-            System.out.println("Edit appliquer Modif "+clone.getDateecheance());
+
+    public void appliquerModif() {
+            SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+        if (edit) {
+            //CA PUE
+            clone.setDateecheance(formater.format(dateClone));
+            System.out.println("Edit appliquer Modif " + clone.getDateecheance());
             facade.editDevisGeneral(clone);
-        }else{
+        } else {
+            clone.setDateecheance(formater.format(dateClone));
+            System.out.println("Edit appliquer Modif " + clone.getDateecheance());
             facade.addDevisGeneral(clone);
         }
         devisg = (List<Devisgeneral>) facade.getDevisGeneral();

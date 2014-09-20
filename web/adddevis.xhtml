@@ -14,9 +14,15 @@
             <p:layoutUnit position="center">
                 <h:form>
                     <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-                        <h:outputText value="Date échéanche: "/><p:inputText value="#{devisJSF.clone.dateecheance}" maxlength="10"/>
+                        <h:outputText value="Date échéanche: "/><p:calendar id="restricted" value="#{devisJSF.dateClone}" mindate="1/1/00" />
                         <h:outputText value="Status: " /><p:inputText value="#{devisJSF.clone.status}" maxlength="10"/>
-                        <h:outputText value="Société: " /><p:inputText value="#{devisJSF.clone.societe}" maxlength="100"/>
+                        <h:outputText value="Société: " />
+                        <p:selectOneListbox id="advd" value="#{devisJSF.clone.societe}" var="t" filter="true" filterMatchMode="contains" >
+                            <f:selectItems value="#{clientJSF.client}" var="theme" itemLabel="#{theme.societe}" itemValue="#{theme}" />
+                            <p:column>
+                                <h:outputText value="#{t.societe}" />
+                            </p:column>
+                        </p:selectOneListbox>
                         <h:outputText value="Code Tarif: " /><p:inputText value="#{devisJSF.clone.codetarif}" maxlength="100"/>
                         <h:outputText value="Référence: " /><p:inputText value="#{devisJSF.clone.refer}" maxlength="100"/>
                         <h:outputText value="Remarque: " /><p:inputTextarea value="#{devisJSF.clone.remarque}" rows="6" cols="50" maxlength="1000"/>

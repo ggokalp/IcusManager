@@ -15,15 +15,19 @@
             <p:layoutUnit position="center">
                 <h:form id="ftArticle">
                     <p:outputLabel value="Liste de prix:"/>
-                    <p:selectOneMenu id="city" value="#{listeDePrixJSF.nom}" effect="fold" editable="true" panelStyle="width:180px">
-                        <f:selectItems value="#{listeDePrixJSF.listedenoms}" var="list" itemLabel="#{list}" itemValue="#{list}" />
-                    </p:selectOneMenu>
+                    <p:selectOneListbox id="selectlist" value="#{listeDePrixJSF.nom}" var="l" filter="true" filterMatchMode="contains" >
+                        <f:selectItems value="#{listeDePrixJSF.listedenoms}" var="list" itemLabel="#{list}" itemValue="#{list}"/>
+                        <p:column>
+                            <h:outputText value="#{l}" />
+                        </p:column>
+                    </p:selectOneListbox>
                     <p:commandButton value="Charger liste" update="tableArticleDeLaListeDePrix" />
-                    <p:commandButton value="Créer nouvelle liste" action="#{listeDePrixJSF.addList()}" update=":ftArticle"/>
+                    <p:commandButton value="Créer nouvelle liste" action="#{listeDePrixJSF.addList()}" update="selectlist tableArticleDeLaListeDePrix" />
                     <p:inputText value="#{listeDePrixJSF.nouveauNom}"/>
 
                     <p:dataTable id="tableArticleDeLaListeDePrix" var="prix" value="#{listeDePrixJSF.listedeprix}" 
-                                 style="margin-bottom:20px" editable="true">
+                                 style="margin-bottom:20px" editable="true"
+                                 selectionMode="single" selection="#{listeDePrixJSF.selected}" rowKey="#{prix.listedeprixPK}" >
 
                         <p:ajax event="rowEdit" listener="#{listeDePrixJSF.onRowEdit}" />
 

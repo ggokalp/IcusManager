@@ -46,9 +46,7 @@ public class ListeDePrixJSF implements Serializable {
     }
 
     public List<Listedeprix> getListedeprix() {
-        if (listedeprix.isEmpty()) {
-            listedeprix = (List<Listedeprix>) facade.getListesDePrix(idClient, nom);
-        }
+        listedeprix = (List<Listedeprix>) facade.getListesDePrix(idClient, nom);
         return listedeprix;
     }
 
@@ -130,6 +128,8 @@ public class ListeDePrixJSF implements Serializable {
         if (!this.nouveauNom.isEmpty()) {
             this.nom = this.nouveauNom;
         }
+        this.listedenoms.add(nom);
+        this.listedeprix.clear();
         this.nouveauNom = "";
     }
 

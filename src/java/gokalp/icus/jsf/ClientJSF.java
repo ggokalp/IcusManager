@@ -37,7 +37,9 @@ public class ClientJSF implements Serializable {
     }
 
     public List<Client> getClient() {
+        System.out.println("getClientJSF");
         client = (List<Client>) facade.getClient();
+        System.out.println("getClientJSF 1 :"+client.get(0).getSociete());
         return client;
     }
 
