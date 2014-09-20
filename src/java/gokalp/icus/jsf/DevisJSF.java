@@ -73,4 +73,12 @@ public class DevisJSF implements Serializable {
         this.client = client;
         return "voirdevis";
     }
+    
+    public void duppliquerDevis(){
+        facade.cloneDevis(selected);
+    }
+    
+    public void supprimerDevis(){
+        facade.delDevisGeneral(selected.getId());
+    }
 }

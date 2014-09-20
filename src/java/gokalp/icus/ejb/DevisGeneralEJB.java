@@ -67,4 +67,14 @@ public class DevisGeneralEJB {
         }
         return false;
     }
+    
+    public boolean cloneDevis(Devisgeneral devis){
+        System.out.println("Clone devis general ejb");
+        if(devis != null){
+            devis.setId(null);
+            em.persist(devis);
+            return true;
+        }
+        return false;
+    }
 }
