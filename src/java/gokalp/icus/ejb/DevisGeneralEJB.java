@@ -20,7 +20,6 @@ import javax.persistence.Query;
  */
 @Stateless
 public class DevisGeneralEJB {
-
     @PersistenceContext(unitName="IcusManagerPU")
     private EntityManager em;
     

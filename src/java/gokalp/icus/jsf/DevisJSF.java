@@ -5,7 +5,10 @@
  */
 package gokalp.icus.jsf;
 
+import gokalp.icus.entity.Article;
 import gokalp.icus.entity.Client;
+import gokalp.icus.entity.Devisdetails;
+import gokalp.icus.entity.DevisdetailsDataModel;
 import gokalp.icus.entity.Devisgeneral;
 import gokalp.icus.facade.Facade;
 import java.io.Serializable;
@@ -32,14 +35,19 @@ public class DevisJSF implements Serializable {
     private List<Devisgeneral> devisg;
     private Devisgeneral selected;
     private Devisgeneral clone;
+    private Devisdetails selecteddd;
     private Client client;
+    private Client nouveauClient;
     private boolean edit;
     private Date dateClone;
+    public DevisdetailsDataModel devisModel;
 
     public DevisJSF() {
         devisg = new ArrayList<>();
         edit = false;
         dateClone = new Date();
+        clone = new Devisgeneral();
+        nouveauClient = new Client();
     }
 
     public Date getDateClone() {
@@ -82,9 +90,37 @@ public class DevisJSF implements Serializable {
         System.out.println("setClone: " + this.clone.getSociete());
     }
 
+    public DevisdetailsDataModel getDevisModel() {
+        return devisModel;
+    }
+
+    public void setDevisModel(DevisdetailsDataModel devisModel) {
+        this.devisModel = devisModel;
+    }
+
     public String setClient(Client client) {
         this.client = client;
         return "voirdevis";
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Client getNouveauClient() {
+        return nouveauClient;
+    }
+
+    public void setNouveauClient(Client nouveauClient) {
+        this.nouveauClient = nouveauClient;
+    }
+
+    public Devisdetails getSelecteddd() {
+        return selecteddd;
+    }
+
+    public void setSelecteddd(Devisdetails selecteddd) {
+        this.selecteddd = selecteddd;
     }
 
     public String ajouterDevis() {
@@ -94,7 +130,9 @@ public class DevisJSF implements Serializable {
     }
 
     public String editerDevis() {
+        System.out.println("editerDevis()");
         clone = selected;
+        devisModel = new DevisdetailsDataModel((List<Devisdetails>) clone.getDevisdetailsCollection());
         edit = true;
         return "ajoutDevis";
     }
@@ -114,7 +152,7 @@ public class DevisJSF implements Serializable {
     }
 
     public void appliquerModif() {
-            SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formater = new SimpleDateFormat("dd-MM-yyyy");
         if (edit) {
             //CA PUE
             clone.setDateecheance(formater.format(dateClone));
@@ -126,5 +164,21 @@ public class DevisJSF implements Serializable {
             facade.addDevisGeneral(clone);
         }
         devisg = (List<Devisgeneral>) facade.getDevisGeneral();
+    }
+
+    public void ajouterDevisDetails(Article article) {
+        System.out.println("Article à ajouter : " + article.getLibellefr());
+        Devisdetails devisd = new Devisdetails();
+        devisd.setArticle(article.getLibellefr());
+        devisd.setQuantite(1);
+        devisd.setPrixht(article.getPrixvente());
+        devisd.setPrixtotht(article.getPrixvente());
+        devisd.setNopiece("RFP" + (new Date()).getYear() + article.getId());
+        devisd.setIddevis(clone);
+        clone.getDevisdetailsCollection().add(devisd);
+    }
+
+    public void supprimerDevisDetails() {
+        clone.getDevisdetailsCollection().remove(selecteddd);
     }
 }

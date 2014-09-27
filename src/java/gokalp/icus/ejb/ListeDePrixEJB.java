@@ -18,7 +18,6 @@ import javax.persistence.Query;
  */
 @Stateless
 public class ListeDePrixEJB {
-
     @PersistenceContext(unitName = "IcusManagerPU")
     private EntityManager em;
 

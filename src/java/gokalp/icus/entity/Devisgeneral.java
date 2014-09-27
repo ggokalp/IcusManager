@@ -7,6 +7,7 @@ package gokalp.icus.entity;
 
 import com.google.common.collect.Iterables;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -98,6 +99,7 @@ public class Devisgeneral implements Serializable {
     private Collection<Devisdetails> devisdetailsCollection;
 
     public Devisgeneral() {
+        this.devisdetailsCollection = new ArrayList<Devisdetails>();
     }
 
     public Devisgeneral(Integer id) {

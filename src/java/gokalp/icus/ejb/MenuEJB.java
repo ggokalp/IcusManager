@@ -13,7 +13,6 @@ import javax.persistence.Query;
  */
 @Stateless
 public class MenuEJB {
-
     @PersistenceContext(unitName = "IcusManagerPU")
     private EntityManager em;
 

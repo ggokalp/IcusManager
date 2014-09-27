@@ -3,15 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Garcian/Documents/workspace/IcusManager/web/adddevis.xhtml</file>
-            <file>file:/C:/Users/Garcian/Documents/workspace/IcusManager/web/devis.xhtml</file>
-            <file>file:/C:/Users/Garcian/Documents/workspace/IcusManager/src/java/gokalp/icus/ejb/DevisGeneralEJB.java</file>
-            <file>file:/C:/Users/Garcian/Documents/workspace/IcusManager/src/java/gokalp/icus/facade/Facade.java</file>
-            <file>file:/C:/Users/Garcian/Documents/workspace/IcusManager/src/conf/persistence.xml</file>
-            <file>file:/C:/Users/Garcian/Documents/workspace/IcusManager/web/WEB-INF/faces-config.xml</file>
-            <file>file:/C:/Users/Garcian/Documents/workspace/IcusManager/src/java/gokalp/icus/ejb/DevisDetailsEJB.java</file>
-            <file>file:/C:/Users/Garcian/Documents/workspace/IcusManager/src/java/gokalp/icus/jsf/DevisJSF.java</file>
-            <file>file:/C:/Users/Garcian/Documents/workspace/IcusManager/web/client.xhtml</file>
+            <file>file:/C:/Users/My%20Caruba/workspace/IcusManager/src/java/gokalp/icus/entity/Devisdetails.java</file>
+            <file>file:/C:/Users/My%20Caruba/workspace/IcusManager/web/listedeprix.xhtml</file>
+            <file>file:/C:/Users/My%20Caruba/workspace/IcusManager/web/devis.xhtml</file>
+            <file>file:/C:/Users/My%20Caruba/workspace/IcusManager/setup/glassfish-resources.xml</file>
+            <file>file:/C:/Users/My%20Caruba/workspace/IcusManager/src/java/gokalp/icus/entity/DevisdetailsDataModel.java</file>
+            <file>file:/C:/Users/My%20Caruba/workspace/IcusManager/src/java/gokalp/icus/jsf/DevisJSF.java</file>
+            <file>file:/C:/Users/My%20Caruba/workspace/IcusManager/web/adddevis.xhtml</file>
+            <file>file:/C:/Users/My%20Caruba/workspace/IcusManager/src/java/gokalp/icus/ejb/DevisGeneralEJB.java</file>
+            <file>file:/C:/Users/My%20Caruba/workspace/IcusManager/src/java/gokalp/icus/ejb/MenuEJB.java</file>
+            <file>file:/C:/Users/My%20Caruba/workspace/IcusManager/src/java/gokalp/icus/ejb/ListeDePrixEJB.java</file>
+            <file>file:/C:/Users/My%20Caruba/workspace/IcusManager/src/java/gokalp/icus/entity/Devisgeneral.java</file>
         </group>
     </open-files>
 </project-private>
