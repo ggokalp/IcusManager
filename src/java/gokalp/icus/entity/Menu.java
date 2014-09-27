@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author My Caruba
+ * @author g.gokalp
  */
 @Entity
 @Table(name = "MENU")
@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Menu.findById", query = "SELECT m FROM Menu m WHERE m.id = :id"),
     @NamedQuery(name = "Menu.findByCode", query = "SELECT m FROM Menu m WHERE m.code = :code"),
     @NamedQuery(name = "Menu.findByNom", query = "SELECT m FROM Menu m WHERE m.nom = :nom"),
+    @NamedQuery(name = "Menu.findByImage", query = "SELECT m FROM Menu m WHERE m.image = :image"),
     @NamedQuery(name = "Menu.findByUtilisateur", query = "SELECT m FROM Menu m WHERE m.utilisateur = :utilisateur"),
     @NamedQuery(name = "Menu.findByDroit", query = "SELECT m FROM Menu m WHERE m.droit = :droit")})
 public class Menu implements Serializable {
@@ -51,6 +52,11 @@ public class Menu implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "NOM")
     private String nom;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "IMAGE")
+    private String image;
     @Column(name = "UTILISATEUR")
     private Integer utilisateur;
     @Column(name = "DROIT")
@@ -63,10 +69,11 @@ public class Menu implements Serializable {
         this.id = id;
     }
 
-    public Menu(Integer id, String code, String nom) {
+    public Menu(Integer id, String code, String nom, String image) {
         this.id = id;
         this.code = code;
         this.nom = nom;
+        this.image = image;
     }
 
     public Integer getId() {
@@ -91,6 +98,14 @@ public class Menu implements Serializable {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Integer getUtilisateur() {

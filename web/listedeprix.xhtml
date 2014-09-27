@@ -15,7 +15,7 @@
             <p:layoutUnit position="center">
                 <h:form id="ftArticle">
                     <p:outputLabel value="Liste de prix:"/>
-                    <p:selectOneListbox id="selectlist" value="#{listeDePrixJSF.nom}" var="l" filter="true" filterMatchMode="contains" >
+                    <p:selectOneListbox id="selectlist" value="#{listeDePrixJSF.nom}" var="l">
                         <f:selectItems value="#{listeDePrixJSF.listedenoms}" var="list" itemLabel="#{list}" itemValue="#{list}"/>
                         <p:column>
                             <h:outputText value="#{l}" />
@@ -69,7 +69,7 @@
                             Article à ajouter
                         </f:facet>
                         <p:column headerText="Libellé" filterMatchMode="contains">
-                            <h:outputText value="#{article.libellefr}" />
+                            <h:outputText value="#{article.libellefrl}" />
                         </p:column>
                         <p:column headerText="Famille" filterMatchMode="contains">
                             <h:outputText value="#{article.famille}" />

@@ -28,7 +28,7 @@ public class Facade {
     @EJB
     private ClientEJB clientEJB;
     @EJB
-    private ArticleEJB  articleEJB;
+    private ArticleEJB articleEJB;
     @EJB
     private ListeDePrixEJB listeEJB;
     @EJB
@@ -40,12 +40,12 @@ public class Facade {
         System.out.println("facade menu");
         return menuEJB.getMenus();
     }
-    
-    public Collection<Client> getClient(){
+
+    public Collection<Client> getClient() {
         return clientEJB.getClients();
     }
-    
-    public boolean addClient(Client client){
+
+    public boolean addClient(Client client) {
         System.out.println("Add Facade");
         return clientEJB.addClient(client);
     }
@@ -59,8 +59,8 @@ public class Facade {
         System.out.println("Edit Facade");
         return clientEJB.editClient(client);
     }
-    
-    public Collection<Article> getArticles(){
+
+    public Collection<Article> getArticles() {
         return articleEJB.getArticles();
     }
 
@@ -68,83 +68,88 @@ public class Facade {
         System.out.println("Add Facade");
         return articleEJB.addArticle(article);
     }
-    
-    public boolean delArticle(int idArticle){
+
+    public boolean delArticle(int idArticle) {
         System.out.println("Delete Facade");
         return articleEJB.delArticle(idArticle);
     }
-    
-    public boolean editArticle(Article article){
+
+    public boolean editArticle(Article article) {
         System.out.println("Edit Facade");
         return articleEJB.editArticle(article);
     }
-    
-    public Collection<Listedeprix> getListesDePrix(){
+
+    public Collection<Listedeprix> getListesDePrix() {
         return listeEJB.getListesDePrix();
     }
-    
-    public Collection<Listedeprix> getListesDePrix(int idClient){
+
+    public Collection<Listedeprix> getListesDePrix(int idClient) {
         return listeEJB.getListeDePrix(idClient);
     }
-    
-    public Collection<Listedeprix> getListesDePrix(int idClient, String nom){
-        return listeEJB.getListeDePrix(idClient,nom);
+
+    public Collection<Listedeprix> getListesDePrix(int idClient, String nom) {
+        return listeEJB.getListeDePrix(idClient, nom);
     }
-    
-    public Collection<String> getListeDeNoms(int idClient){
+
+    public Collection<String> getListeDeNoms(int idClient) {
         return listeEJB.getListeDeNoms(idClient);
     }
-    
-    public List<Article> getArticles(List<Listedeprix> list){
+
+    public List<Article> getArticles(List<Listedeprix> list) {
         System.out.println("get articles facade");
         return articleEJB.getArticles(list);
     }
-    
-    public boolean addListeDePrix(Listedeprix liste){
+
+    public boolean addListeDePrix(Listedeprix liste) {
         return listeEJB.addListeDePrix(liste);
     }
-    
-    public boolean delListeDePrix(Listedeprix liste){
+
+    public boolean delListeDePrix(Listedeprix liste) {
         return listeEJB.delListeDePrix(liste);
     }
-    
-    public boolean editListeDePrix(Listedeprix liste){
+
+    public boolean editListeDePrix(Listedeprix liste) {
         return listeEJB.editListeDePrix(liste);
     }
-    
-    public Collection<Devisgeneral> getDevisGeneral(){
+
+    public Collection<Devisgeneral> getDevisGeneral() {
+        System.out.println("Facade: getDevisGeneral");
         return devisGEJB.getDevis();
     }
-    
-    public Collection<Devisgeneral> getDevisGeneral(int idClient){
+
+    public Collection<Devisgeneral> getDevisGeneral(int idClient) {
         return devisGEJB.getDevis(idClient);
     }
-    
-    public Collection<Devisgeneral> getDevisGeneral(String nomClient){
+
+    public Collection<Devisgeneral> getDevisGeneral(String nomClient) {
         return devisGEJB.getDevis(nomClient);
     }
-    
-    public boolean addDevisGeneral(Devisgeneral devis){
+
+    public boolean addDevisGeneral(Devisgeneral devis) {
         return devisGEJB.addDevis(devis);
     }
-    
-    public boolean delDevisGeneral(int iddevis){
+
+    public boolean delDevisGeneral(int iddevis) {
         return devisGEJB.delDevis(iddevis);
     }
-    
-    public boolean editDevisGeneral(Devisgeneral devis){
+
+    public boolean editDevisGeneral(Devisgeneral devis) {
         return devisGEJB.editDevis(devis);
     }
-    
-    public Collection<Devisdetails> getDevisDetails(){
+
+    public Collection<Devisdetails> getDevisDetails() {
         return devisDEJB.getDevis();
     }
-    
-    public Collection<Devisdetails> getDevisDetails(int iddevis){
+
+    public Collection<Devisdetails> getDevisDetails(int iddevis) {
         return devisDEJB.getDevis(iddevis);
     }
-    
-    public Devisgeneral cloneDevis(Devisgeneral devis){
+
+    public Devisgeneral cloneDevis(Devisgeneral devis) {
         return devisGEJB.cloneDevis(devis);
+    }
+
+    public Collection<Devisgeneral> getBigTenDevis(){
+        return devisGEJB.getBigTenDevis();
     }
 }

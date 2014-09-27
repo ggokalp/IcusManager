@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gokalp.icus.entity;
 
-import com.google.common.collect.Iterables;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -47,6 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Devisgeneral.findByDerniertransfert", query = "SELECT d FROM Devisgeneral d WHERE d.derniertransfert = :derniertransfert"),
     @NamedQuery(name = "Devisgeneral.findByTotalht", query = "SELECT d FROM Devisgeneral d WHERE d.totalht = :totalht"),
     @NamedQuery(name = "Devisgeneral.findByTotaltva", query = "SELECT d FROM Devisgeneral d WHERE d.totaltva = :totaltva"),
+    @NamedQuery(name = "Devisgeneral.findBigTen", query = "SELECT d FROM Devisgeneral d order by d.totalttc desc"),
     @NamedQuery(name = "Devisgeneral.findByTotalttc", query = "SELECT d FROM Devisgeneral d WHERE d.totalttc = :totalttc")})
 public class Devisgeneral implements Serializable {
 
@@ -95,11 +90,11 @@ public class Devisgeneral implements Serializable {
     private Double totaltva;
     @Column(name = "TOTALTTC")
     private Double totalttc;
-    @OneToMany(mappedBy = "iddevis",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "iddevis", cascade = CascadeType.ALL)
     private Collection<Devisdetails> devisdetailsCollection;
 
     public Devisgeneral() {
-        this.devisdetailsCollection = new ArrayList<Devisdetails>();
+        this.devisdetailsCollection = new ArrayList<>();
     }
 
     public Devisgeneral(Integer id) {

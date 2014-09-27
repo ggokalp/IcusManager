@@ -1,6 +1,6 @@
 drop table artcorresp;
 
-CREATE TABLE article (
+CREATE TABLE ARTCORRESP(
   id int NOT NULL, 
   code varchar(30) NOT NULL,
   PRIMARY KEY (id)

@@ -51,22 +51,19 @@ public class MenuJSF implements Serializable {
         model = new DefaultDashboardModel();
         DashboardColumn column1 = new DefaultDashboardColumn();
         DashboardColumn column2 = new DefaultDashboardColumn();
-        DashboardColumn column3 = new DefaultDashboardColumn();
-
+        
         column1.addWidget(getMenu().get(0).getCode());
         column1.addWidget(getMenu().get(1).getCode());
         column1.addWidget(getMenu().get(2).getCode());
-
-        column2.addWidget(getMenu().get(3).getCode());
+        column1.addWidget(getMenu().get(3).getCode());
         
-        column3.addWidget(getMenu().get(4).getCode());
-        column3.addWidget(getMenu().get(5).getCode());
-        column3.addWidget(getMenu().get(6).getCode());
-        column3.addWidget(getMenu().get(7).getCode());
+        column2.addWidget(getMenu().get(4).getCode());
+        column2.addWidget(getMenu().get(5).getCode());
+        column2.addWidget(getMenu().get(6).getCode());
+        column2.addWidget(getMenu().get(7).getCode());
 
         model.addColumn(column1);
         model.addColumn(column2);
-        model.addColumn(column3);
     }
 
     public void handleReorder(DashboardReorderEvent event) {

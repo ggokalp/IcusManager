@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="IcusManagerPU" transaction-type="JTA">
-    <jta-data-source>java:app/jdbc/icusDS</jta-data-source>
+    <jta-data-source>jdbc/icus</jta-data-source>
     <class>gokalp.icus.entity.Article</class>
     <class>gokalp.icus.entity.Client</class>
     <class>gokalp.icus.entity.Devisdetails</class>
     <class>gokalp.icus.entity.Devisgeneral</class>
     <class>gokalp.icus.entity.Listedeprix</class>
     <class>gokalp.icus.entity.Menu</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
 </persistence>

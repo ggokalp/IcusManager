@@ -13,5 +13,3 @@ CREATE TABLE devisdetails (
 	PRIMARY KEY (id),
 	foreign key (iddevis) references devisgeneral(id)
 );
-
--- COmment

@@ -1,3 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package gokalp.icus.entity;
 
 import java.io.Serializable;
@@ -15,7 +21,8 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * @author My Caruba
+ *
+ * @author g.gokalp
  */
 @Entity
 @Table(name = "ARTICLE")
@@ -24,12 +31,16 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Article.findAll", query = "SELECT a FROM Article a"),
     @NamedQuery(name = "Article.findById", query = "SELECT a FROM Article a WHERE a.id = :id"),
     @NamedQuery(name = "Article.findByCode", query = "SELECT a FROM Article a WHERE a.code = :code"),
-    @NamedQuery(name = "Article.findByLibellefr", query = "SELECT a FROM Article a WHERE a.libellefr = :libellefr"),
-    @NamedQuery(name = "Article.findByLibellenl", query = "SELECT a FROM Article a WHERE a.libellenl = :libellenl"),
-    @NamedQuery(name = "Article.findByLibelleen", query = "SELECT a FROM Article a WHERE a.libelleen = :libelleen"),
+    @NamedQuery(name = "Article.findByLibellefrl", query = "SELECT a FROM Article a WHERE a.libellefrl = :libellefrl"),
+    @NamedQuery(name = "Article.findByLibellenll", query = "SELECT a FROM Article a WHERE a.libellenll = :libellenll"),
+    @NamedQuery(name = "Article.findByLibelleenl", query = "SELECT a FROM Article a WHERE a.libelleenl = :libelleenl"),
+    @NamedQuery(name = "Article.findByLibellefrc", query = "SELECT a FROM Article a WHERE a.libellefrc = :libellefrc"),
+    @NamedQuery(name = "Article.findByLibellenlc", query = "SELECT a FROM Article a WHERE a.libellenlc = :libellenlc"),
+    @NamedQuery(name = "Article.findByLibelleenc", query = "SELECT a FROM Article a WHERE a.libelleenc = :libelleenc"),
     @NamedQuery(name = "Article.findByFamille", query = "SELECT a FROM Article a WHERE a.famille = :famille"),
     @NamedQuery(name = "Article.findByPrixachat", query = "SELECT a FROM Article a WHERE a.prixachat = :prixachat"),
     @NamedQuery(name = "Article.findByPrixvente", query = "SELECT a FROM Article a WHERE a.prixvente = :prixvente"),
+    @NamedQuery(name = "Article.findByPrixventettc", query = "SELECT a FROM Article a WHERE a.prixventettc = :prixventettc"),
     @NamedQuery(name = "Article.findByStock", query = "SELECT a FROM Article a WHERE a.stock = :stock"),
     @NamedQuery(name = "Article.findByCompose", query = "SELECT a FROM Article a WHERE a.compose = :compose"),
     @NamedQuery(name = "Article.findByBloque", query = "SELECT a FROM Article a WHERE a.bloque = :bloque")})
@@ -46,14 +57,24 @@ public class Article implements Serializable {
     @Column(name = "CODE")
     private String code;
     @Size(max = 1500)
-    @Column(name = "LIBELLEFR")
-    private String libellefr;
+    @Column(name = "LIBELLEFRL")
+    private String libellefrl;
     @Size(max = 1500)
-    @Column(name = "LIBELLENL")
-    private String libellenl;
+    @Column(name = "LIBELLENLL")
+    private String libellenll;
     @Size(max = 1500)
-    @Column(name = "LIBELLEEN")
-    private String libelleen;
+    @Column(name = "LIBELLEENL")
+    private String libelleenl;
+    @Size(max = 250)
+    @Column(name = "LIBELLEFRC")
+    private String libellefrc;
+    @Size(max = 250)
+    @Column(name = "LIBELLENLC")
+    private String libellenlc;
+    @Size(max = 250)
+    @Column(name = "LIBELLEENC")
+    private String libelleenc;
+    @Size(max = 20)
     @Column(name = "FAMILLE")
     private String famille;
     @Basic(optional = false)
@@ -64,6 +85,10 @@ public class Article implements Serializable {
     @NotNull
     @Column(name = "PRIXVENTE")
     private double prixvente;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "PRIXVENTETTC")
+    private double prixventettc;
     @Column(name = "STOCK")
     private Integer stock;
     @Column(name = "COMPOSE")
@@ -78,11 +103,12 @@ public class Article implements Serializable {
         this.id = id;
     }
 
-    public Article(Integer id, String code, double prixachat, double prixvente) {
+    public Article(Integer id, String code, double prixachat, double prixvente, double prixventettc) {
         this.id = id;
         this.code = code;
         this.prixachat = prixachat;
         this.prixvente = prixvente;
+        this.prixventettc = prixventettc;
     }
 
     public Integer getId() {
@@ -101,28 +127,52 @@ public class Article implements Serializable {
         this.code = code;
     }
 
-    public String getLibellefr() {
-        return libellefr;
+    public String getLibellefrl() {
+        return libellefrl;
     }
 
-    public void setLibellefr(String libellefr) {
-        this.libellefr = libellefr;
+    public void setLibellefrl(String libellefrl) {
+        this.libellefrl = libellefrl;
     }
 
-    public String getLibellenl() {
-        return libellenl;
+    public String getLibellenll() {
+        return libellenll;
     }
 
-    public void setLibellenl(String libellenl) {
-        this.libellenl = libellenl;
+    public void setLibellenll(String libellenll) {
+        this.libellenll = libellenll;
     }
 
-    public String getLibelleen() {
-        return libelleen;
+    public String getLibelleenl() {
+        return libelleenl;
     }
 
-    public void setLibelleen(String libelleen) {
-        this.libelleen = libelleen;
+    public void setLibelleenl(String libelleenl) {
+        this.libelleenl = libelleenl;
+    }
+
+    public String getLibellefrc() {
+        return libellefrc;
+    }
+
+    public void setLibellefrc(String libellefrc) {
+        this.libellefrc = libellefrc;
+    }
+
+    public String getLibellenlc() {
+        return libellenlc;
+    }
+
+    public void setLibellenlc(String libellenlc) {
+        this.libellenlc = libellenlc;
+    }
+
+    public String getLibelleenc() {
+        return libelleenc;
+    }
+
+    public void setLibelleenc(String libelleenc) {
+        this.libelleenc = libelleenc;
     }
 
     public String getFamille() {
@@ -147,6 +197,14 @@ public class Article implements Serializable {
 
     public void setPrixvente(double prixvente) {
         this.prixvente = prixvente;
+    }
+
+    public double getPrixventettc() {
+        return prixventettc;
+    }
+
+    public void setPrixventettc(double prixventettc) {
+        this.prixventettc = prixventettc;
     }
 
     public Integer getStock() {

@@ -113,7 +113,7 @@ public class ListeDePrixJSF implements Serializable {
     public void addArticle(Article selectedArticle) {
         Listedeprix l = new Listedeprix(idClient, nom, selectedArticle.getId());
         l.setFamille(selectedArticle.getFamille());
-        l.setLibelle(selectedArticle.getLibellefr());
+        l.setLibelle(selectedArticle.getLibellefrl());
         l.setPrixvente(selectedArticle.getPrixvente());
         facade.addListeDePrix(l);
         this.listedeprix.clear();

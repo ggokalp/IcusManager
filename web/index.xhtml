@@ -8,7 +8,7 @@
         <title>Icus Manager</title>
     </h:head>
     <h:body style="min-height: 500px">
-        <p:layout style="min-width:400px;min-height:200px;max-height:805px">
+        <p:layout fullPage="true">
             <ui:include src="menu_left.xhtml"/>
 
             <p:layoutUnit position="center">
@@ -20,43 +20,60 @@
 
                         <p:panel id="#{menuJSF.menu.get(0).getCode()}" header="#{menuJSF.menu.get(0).getNom()}">
                             <h:outputLink value="#{facesContext.externalContext.requestContextPath}/faces/index.xhtml">
-                                <p:graphicImage value="/pictures/menu/stylo.png" title="Editez Client"/> 
+                                <p:graphicImage value="#{menuJSF.menu.get(0).getImage()}" title="#{menuJSF.menu.get(0).getNom()}"/> 
                             </h:outputLink>
                         </p:panel>
 
                         <p:panel id="#{menuJSF.menu.get(1).getCode()}" header="#{menuJSF.menu.get(1).getNom()}">
                             <h:outputLink value="#{facesContext.externalContext.requestContextPath}/faces/index.xhtml">
-                                <p:graphicImage value="/pictures/menu/notes.png" title="Devis client"/> 
+                                <p:graphicImage value="#{menuJSF.menu.get(1).getImage()}" title="#{menuJSF.menu.get(1).getNom()}"/> 
                             </h:outputLink>
                         </p:panel>
 
                         <p:panel id="#{menuJSF.menu.get(2).getCode()}" header="#{menuJSF.menu.get(2).getNom()}">
-                            <h:outputText value="#{menuJSF.menu.get(2).getNom()}" />
+                            <h:outputLink value="#{facesContext.externalContext.requestContextPath}/faces/index.xhtml">
+                                <p:graphicImage value="#{menuJSF.menu.get(2).getImage()}" title="#{menuJSF.menu.get(2).getNom()}"/> 
+                            </h:outputLink>
                         </p:panel>
 
                         <p:panel id="#{menuJSF.menu.get(3).getCode()}" header="#{menuJSF.menu.get(3).getNom()}">
-                            <h:outputText value="#{menuJSF.menu.get(3).getNom()}" />
+                            <h:outputLink value="#{facesContext.externalContext.requestContextPath}/faces/index.xhtml">
+                                <p:graphicImage value="#{menuJSF.menu.get(3).getImage()}" title="#{menuJSF.menu.get(3).getNom()}"/> 
+                            </h:outputLink>
                         </p:panel>
 
                         <p:panel id="#{menuJSF.menu.get(4).getCode()}" header="#{menuJSF.menu.get(4).getNom()}">
-                            <h:outputText value="#{menuJSF.menu.get(4).getNom()}" />
+                            <h:outputLink value="#{facesContext.externalContext.requestContextPath}/faces/index.xhtml">
+                                <p:graphicImage value="#{menuJSF.menu.get(4).getImage()}" title="#{menuJSF.menu.get(4).getNom()}"/> 
+                            </h:outputLink>
                         </p:panel>
 
                         <p:panel id="#{menuJSF.menu.get(5).getCode()}" header="#{menuJSF.menu.get(5).getNom()}">
-                            <h:outputText value="#{menuJSF.menu.get(5).getNom()}" />
+                            <h:outputLink value="#{facesContext.externalContext.requestContextPath}/faces/index.xhtml">
+                                <p:graphicImage value="#{menuJSF.menu.get(5).getImage()}" title="#{menuJSF.menu.get(5).getNom()}"/> 
+                            </h:outputLink>
                         </p:panel>
 
                         <p:panel id="#{menuJSF.menu.get(6).getCode()}" header="#{menuJSF.menu.get(6).getNom()}">
-                            <h:outputText value="#{menuJSF.menu.get(6).getNom()}" />
+                            <h:outputLink value="#{facesContext.externalContext.requestContextPath}/faces/index.xhtml">
+                                <p:graphicImage value="#{menuJSF.menu.get(6).getImage()}" title="#{menuJSF.menu.get(6).getNom()}"/> 
+                            </h:outputLink>
                         </p:panel>
 
                         <p:panel id="#{menuJSF.menu.get(7).getCode()}" header="#{menuJSF.menu.get(7).getNom()}">
-                            <h:outputText value="#{menuJSF.menu.get(7).getNom()}" />
+                            <h:outputLink value="#{facesContext.externalContext.requestContextPath}/faces/index.xhtml">
+                                <p:graphicImage value="#{menuJSF.menu.get(7).getImage()}" title="#{menuJSF.menu.get(7).getNom()}" style="margin: auto"/> 
+                            </h:outputLink>
                         </p:panel>
                     </p:dashboard>
 
                     <div style="clear:both" />
                 </h:form>
+            </p:layoutUnit>
+            <p:layoutUnit position="east" size="900">
+                <p:lineChart value="#{chartJSF.model}" legendPosition="e" />
+                <p:lineChart value="#{chartJSF.model}" legendPosition="ne" 
+                             fill="true" stacked="true"/>
             </p:layoutUnit>
         </p:layout>
     </h:body>

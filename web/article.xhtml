@@ -28,8 +28,8 @@
                         <p:column style="width:16px">
                             <p:rowToggler />
                         </p:column>
-                        <p:column filterBy="#{article.libellefr}" headerText="Libellé" filterMatchMode="contains">
-                            <h:outputText value="#{article.libellefr}" />
+                        <p:column filterBy="#{article.libellefrl}" headerText="Libellé" filterMatchMode="contains">
+                            <h:outputText value="#{article.libellefrl}" />
                         </p:column>
                         <p:column filterBy="#{article.prixachat}" headerText="Prix Achat" filterMatchMode="contains">
                             <h:outputText value="#{article.prixachat}" />
@@ -49,10 +49,10 @@
                         <p:rowExpansion>
                             <p:panelGrid  columns="2" columnClasses="label,value" style="width:500px">
                                 <h:outputText value="Libellé Anglais" />
-                                <h:outputText value="#{article.libelleen}" />
+                                <h:outputText value="#{article.libelleenl}" />
 
                                 <h:outputText value="Libellé Néérlandais" />
-                                <h:outputText value="#{article.libellenl}" />
+                                <h:outputText value="#{article.libellenll}" />
 
                                 <h:outputText value="Bloqué ?" />
                                 <h:outputText value="#{article.bloque}" />

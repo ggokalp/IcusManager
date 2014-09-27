@@ -14,7 +14,6 @@ import gokalp.icus.facade.Facade;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -167,9 +166,9 @@ public class DevisJSF implements Serializable {
     }
 
     public void ajouterDevisDetails(Article article) {
-        System.out.println("Article à ajouter : " + article.getLibellefr());
+        System.out.println("Article à ajouter : " + article.getLibellefrl());
         Devisdetails devisd = new Devisdetails();
-        devisd.setArticle(article.getLibellefr());
+        devisd.setArticle(article.getLibellefrl());
         devisd.setQuantite(1);
         devisd.setPrixht(article.getPrixvente());
         devisd.setPrixtotht(article.getPrixvente());
