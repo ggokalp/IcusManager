@@ -42,6 +42,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Devisgeneral.findByTotalht", query = "SELECT d FROM Devisgeneral d WHERE d.totalht = :totalht"),
     @NamedQuery(name = "Devisgeneral.findByTotaltva", query = "SELECT d FROM Devisgeneral d WHERE d.totaltva = :totaltva"),
     @NamedQuery(name = "Devisgeneral.findBigTen", query = "SELECT d FROM Devisgeneral d order by d.totalttc desc"),
+    //TO ADD: SELECT d.societe, SUM(d.totalttc) FROM Devisgeneral d GROUP BY d.societe
+    //Qui donnera les societe avec le total des devis regroupé
     @NamedQuery(name = "Devisgeneral.findByTotalttc", query = "SELECT d FROM Devisgeneral d WHERE d.totalttc = :totalttc")})
 public class Devisgeneral implements Serializable {
 

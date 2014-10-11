@@ -17,7 +17,7 @@
                         <h:outputText value="Date échéanche: "/><p:calendar id="restricted" value="#{devisJSF.dateClone}" mindate="1/1/00" />
                         <h:outputText value="Status: " /><p:inputText value="#{devisJSF.clone.status}" maxlength="10"/>
                         <h:outputText value="Société: " />
-                        <p:selectOneListbox id="advd" value="#{devisJSF.clone.societe}" var="c" >
+                        <p:selectOneListbox id="advd" value="#{devisJSF.clone.societe}" var="c" style="height:100px;width: 222px;">
                             <f:selectItems value="#{clientJSF.client}" var="client" itemLabel="#{client.societe}" itemValue="#{client}" />
                             <p:column>
                                 <h:outputText value="#{c.societe}" />
@@ -32,7 +32,7 @@
                         <h:outputText value="Total TVA: " /><h:outputText value="#{devisJSF.clone.totaltva}"/>
                         <h:outputText value="Total TTC: " /><h:outputText value="#{devisJSF.clone.totalttc}" />
                     </h:panelGrid>
-                    <h:commandButton value="Appliquer" style="margin-left: 20px" action="#{devisJSF.appliquerModif()}"/>
+                    <h:commandButton value="Appliquer" style="margin-left: 120px" action="#{devisJSF.appliquerModif()}"/>
                     <p:dataTable id="tableDevisDetails" var="devisd" value="#{devisJSF.devisModel}"
                                  style="margin-bottom:20px"
                                  selectionMode="single" 
